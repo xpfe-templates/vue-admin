@@ -1,9 +1,9 @@
-# vue
-A vue project template
+# vue-admin
+An admin project based on vue.js and element-ui
 
 ## Installation
 
-> npm i -g xpfe-cli && xpfe init vue [project-name]
+> npm i -g xpfe-cli && xpfe init vue-admin [project-name]
 
 ## Usage
 
