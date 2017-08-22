@@ -1,0 +1,31 @@
+@import './mixin.scss';
+@import './reset.scss';
+@import './font.scss'; // 自定义font
+@import './element-ui.scss';
+@import '../fonts/material-icons.css'; // iconfont直接使用download的，减小更新成本
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  color: #333;
+  background: #F7F7F7;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+html, #app {
+  height: 100%;
+}
+
+// 常用mixin注入，使用u-xxx表示
+.u-clearfix {
+  @include clearfix;
+}
+.u-text-ellipsis {
+  @include textEllipsis;
+}
+.u-text-break {
+  @include textBreak;
+}
