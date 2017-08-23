@@ -21,6 +21,7 @@
 .el-submenu .el-menu-item {
   height: 40px;
   line-height: 40px;
+  min-width: 180px !important;
 }
 .el-menu--gray .el-menu-item:hover,
 .el-menu--gray .el-submenu__title:hover,
