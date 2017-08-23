@@ -79,7 +79,7 @@ router.beforeEach((to, from, next) => {
         next({ path: '/404' })
       } else {
         next('/login') // 否则全部重定向到登录页
-        NProgress.done() // 在hash模式下 改变手动改变hash 重定向回来 不会触发afterEach 暂时hack方案
+        NProgress.done() // 在hash模式下 手动改变hash 重定向回来 不会触发afterEach 暂时hack方案
       }
     }
   }

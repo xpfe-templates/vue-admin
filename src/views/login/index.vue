@@ -1,16 +1,21 @@
 <template>
 <div class="login">
-  <form class="login-form">
-    <li class="login-form__item">
-      <span>用户名</span>
-      <input type="text" v-model="userInfo.username">
-    </li>
-    <li class="login-form__item">
-      <span>密码</span>
-      <input type="password" v-model="userInfo.password">
-    </li>
-    <li class="login-form__btn" @click="onSubmit">登录</li>
-  </form>
+  <h2>系统登录</h2>
+  <el-form class="login-form">
+    <el-form-item>
+      <el-input v-model="userInfo.username" placeholder="请输入用户名">
+        <template slot="prepend">用户名</template>
+      </el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-input v-model="userInfo.password" placeholder="请输入密码">
+        <template slot="prepend">密码</template>
+      </el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-button class="login-form__btn" type="primary" @click="onSubmit">登录</el-button>
+    </el-form-item>
+  </el-form>
 </div>
 </template>
 
@@ -28,10 +33,10 @@ export default {
 
   methods: {
     onSubmit () {
-      // if (!this.userInfo.password) {
-      //   console.log('please input password')
-      //   return
-      // }
+      if (!this.userInfo.password) {
+        this.$message.warning('密码不能为空！')
+        return
+      }
       this.$store.dispatch('Login', this.userInfo).then(() => {
         this.$router.push({ path: '/' })
       }).catch(err => {
@@ -45,40 +50,20 @@ export default {
 <style lang="scss" scoped>
 @import "src/public/css/mixin.scss";
 .login {
-  height: 100vh;
+  height: 100%;
   background-color: #2d3a4b;
+  h2 {
+    padding-top: 120px;
+    color: #fff;
+    text-align: center;
+  }
   &-form {
     width: 300px;
-    height: 300px;
     margin: 0 auto;
-    padding-top: 200px;
-    &__item {
-      @include clearfix;
-      margin-top: 10px;
-      color: #fff;
-      span {
-        float: left;
-        width: 100px;
-        line-height: 30px;
-        text-align: right;
-      }
-      input {
-        float: left;
-        width: 190px;
-        height: 30px;
-        line-height: 30px;
-        margin-left: 10px;
-      }
-    }
+    margin-top: 50px;
     &__btn {
-      display: inline-block;
-      margin: 30px 0 0 110px;
-      width: 150px;
-      line-height: 40px;
-      color: #fff;
-      text-align: center;
-      background: #20a0ff;
-      cursor: pointer;
+      width: 100%;
+      margin-top: 50px;
     }
   }
 }
