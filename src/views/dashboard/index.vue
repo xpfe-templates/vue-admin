@@ -28,10 +28,6 @@ export default {
       })
     },
   },
-
-  mounted () {
-    console.log(this.a.a)
-  }
 }
 </script>
 
