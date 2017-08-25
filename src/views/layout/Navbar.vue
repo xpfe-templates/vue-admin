@@ -1,11 +1,14 @@
 <template>
 <el-menu class="navbar" mode="horizontal" theme="dark">
   <a href="javascript:;" class="navbar-logo"></a>
-  <slot></slot>
-  <el-dropdown class="navbar-right" trigger="click">
-    <div class="navbar-right__wrap">
-      <slot name="right"></slot>
-      <span>{{ username }}</span>
+  <slot name="left"></slot>
+  <div class="navbar-right">
+    <error-log v-if="log.length" class="navbar-right__log" :log="log"></error-log>
+    <div class="navbar-right__slots"><slot></slot></div>
+  </div>
+  <el-dropdown class="navbar-user" trigger="click">
+    <div class="navbar-user__wrap">
+      <span class="u-text-ellipsis">{{ username }}</span>
       <i class="iconfont">arrow_drop_down</i>
     </div>
     <el-dropdown-menu class="user-dropdown" slot="dropdown">
@@ -17,9 +20,17 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import errorLog from 'components/ErrorLog'
+import errLogStore from 'store/errLog'
 
 export default {
   name: 'Navbar',
+  components: { errorLog },
+  data () {
+    return {
+      log: errLogStore.state.errLog
+    }
+  },
   computed: {
     ...mapGetters(['username']),
   },
@@ -45,7 +56,9 @@ export default {
   line-height: 60px;
   border-radius: 0px !important;
   &-logo {
-    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 120px;
     height: 60px;
     background: url('../../public/img/icon-logo.png') no-repeat;
@@ -53,16 +66,34 @@ export default {
     background-position: 15px 15px;
   }
   &-right {
-    float: right;
-    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 150px;
     color: #DDDDDD;
     cursor: pointer;
-    span {
-      margin-right: 4px;
+    &__log, &__slots {
+      float: left;
+      margin-right: 20px;
     }
-    .iconfont {
-      float: right;
-      margin-top: 22px;
+  }
+  &-user {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    color: #DDDDDD;
+    cursor: pointer;
+    &__wrap {
+      span {
+        float: left;
+        max-width: 130px;
+        margin-right: 4px;
+      }
+      .iconfont {
+        float: right;
+        margin-top: 22px;
+      }
     }
   }
 }

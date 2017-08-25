@@ -30,7 +30,7 @@ export default {
   },
 
   mounted () {
-    console.log(this.a.b)
+    console.log(this.a.a)
   }
 }
 </script>
