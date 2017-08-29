@@ -1,6 +1,6 @@
 <template>
 <div class="dashboard">
-  <div class="dashboard-user">
+  <div class="dashboard-user" style="height: 800px;" >
     <p>
       <span>{{ username }}</span>
       <span v-for="(role, index) in roles" :key="index">{{ role }}</span>
@@ -34,6 +34,6 @@ export default {
 
 <style lang="scss" scoped>
 .dashboard {
-  margin: 20px;
+  // border: 1px solid red;
 }
 </style>

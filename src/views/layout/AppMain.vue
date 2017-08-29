@@ -26,7 +26,8 @@ export default {
   bottom: 0;
   overflow-y: auto;
   & > div {
-    min-height: calc(100% - 40px);
+    min-height: calc(100% - 60px);
+    padding: 20px;
   }
 }
 </style>
