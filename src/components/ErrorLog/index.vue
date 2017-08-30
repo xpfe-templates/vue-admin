@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import vueMark from 'vue-mark'
+import { VueMark } from 'vue-mark'
 
 export default {
   name: 'errLog',
-  components: { vueMark },
+  components: { VueMark },
   props: {
     log: {
       type: Array,

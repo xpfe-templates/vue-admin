@@ -5028,9 +5028,9 @@ vue-loader@^12.1.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.2.2"
 
-vue-mark@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/vue-mark/-/vue-mark-1.0.2.tgz#2366921ece0c093296588abd3f4b569a0dc0c65a"
+vue-mark@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/vue-mark/-/vue-mark-1.0.4.tgz#27e4e833e9e59026005ddf6b3081d47ad09b47bc"
   dependencies:
     vue "^2.4.2"
 
