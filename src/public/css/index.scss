@@ -23,9 +23,9 @@ html, #app {
 .u-clearfix {
   @include clearfix;
 }
-.u-text-ellipsis {
+.u-ellipsis {
   @include textEllipsis;
 }
-.u-text-break {
+.u-break {
   @include textBreak;
 }
