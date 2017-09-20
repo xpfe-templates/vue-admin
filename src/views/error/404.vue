@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .err404 {
-  height: 100vh;
+  height: 100%;
   color: #fff;
   background-color: #2d3a4b;
   &-text {

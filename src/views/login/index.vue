@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/public/css/mixin.scss";
+@import "src/assets/css/mixin.scss";
 .login {
   height: 100%;
   background-color: #2d3a4b;

@@ -8,11 +8,11 @@
   </div>
   <el-dropdown class="navbar-user" trigger="click">
     <div class="navbar-user__wrap">
-      <span class="u-text-ellipsis">{{ username }}</span>
+      <span class="u-ellipsis">{{ username }}</span>
       <i class="iconfont">arrow_drop_down</i>
     </div>
     <el-dropdown-menu class="user-dropdown" slot="dropdown">
-      <el-dropdown-item><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
+      <el-dropdown-item><span @click="onLogout" style="display:block;">退出登录</span></el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
 </el-menu>
@@ -35,7 +35,7 @@ export default {
     ...mapGetters(['username']),
   },
   methods: {
-    logout() {
+    onLogout () {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
@@ -61,7 +61,7 @@ export default {
     left: 0;
     width: 120px;
     height: 60px;
-    background: url('../../public/img/icon-logo.png') no-repeat;
+    background: url('../../assets/img/icon-logo.png') no-repeat;
     background-size: 90px 30px;
     background-position: 15px 15px;
   }

@@ -4,6 +4,10 @@
 @import './element-ui.scss';
 @import '../fonts/material-icons.css'; // iconfont直接使用download的，减小更新成本
 
+html {
+  height: 100%;
+}
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -13,10 +17,6 @@ body {
   background: #F7F7F7;
   height: 100%;
   overflow-y: hidden;
-}
-
-html, #app {
-  height: 100%;
 }
 
 // 常用mixin注入，使用u-xxx表示
