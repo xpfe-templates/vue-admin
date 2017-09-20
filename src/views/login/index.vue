@@ -26,7 +26,7 @@ export default {
     return {
       userInfo: {
         username: 'admin',
-        password: ''
+        password: '',
       }
     }
   },

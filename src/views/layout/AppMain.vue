@@ -12,8 +12,8 @@ export default {
   computed: {
     key () {
       return this.$route.name !== undefined ? this.$route.name + Date.now() : this.$route + Date.now()
-    }
-  }
+    },
+  },
 }
 </script>
 

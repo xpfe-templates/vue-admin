@@ -15,10 +15,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'dashboard',
   computed: {
-    ...mapGetters([
-      'username',
-      'roles'
-    ])
+    ...mapGetters(['username', 'roles']),
   },
 
   methods: {
@@ -34,6 +31,6 @@ export default {
 
 <style lang="scss" scoped>
 .dashboard {
-  // border: 1px solid red;
+  height: 100%;
 }
 </style>

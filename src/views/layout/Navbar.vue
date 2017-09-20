@@ -28,12 +28,13 @@ export default {
   components: { errorLog },
   data () {
     return {
-      log: errLogStore.state.errLog
+      log: errLogStore.state.errLog,
     }
   },
   computed: {
     ...mapGetters(['username']),
   },
+
   methods: {
     onLogout () {
       this.$store.dispatch('LogOut').then(() => {
