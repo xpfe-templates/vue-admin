@@ -15,7 +15,7 @@ const errLog = {
   },
   clearLog () {
     this.state.errLog = []
-  }
+  },
 }
 
 export default errLog

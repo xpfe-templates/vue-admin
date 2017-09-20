@@ -9,7 +9,7 @@
 const app = {
   state: {},
   mutations: {},
-  actions: {}
+  actions: {},
 }
 
 export default app

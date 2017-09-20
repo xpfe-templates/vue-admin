@@ -12,13 +12,13 @@ const mockUsers = {
   admin: {
     roles: ['admin'],
     token: 'admin',
-    username: '管理员'
+    username: '管理员',
   },
   user: {
     roles: ['user'],
     token: ['user'],
-    username: '游客'
-  }
+    username: '游客',
+  },
 }
 
 export default {
@@ -28,20 +28,20 @@ export default {
       return {
         code: 0,
         errMsg: '',
-        data: mockUsers[username]
+        data: mockUsers[username],
       }
     }
     return {
       code: -1,
       errMsg: '用户不存在',
-      data: null
+      data: null,
     }
   },
   logout: () => {
     return {
       code: 0,
       errMsg: '',
-      data: null
+      data: null,
     }
   },
   getUserInfo: config => {
@@ -50,13 +50,13 @@ export default {
       return {
         code: 0,
         errMsg: '',
-        data: mockUsers[token]
+        data: mockUsers[token],
       }
     }
     return {
       code: 10004, // TODO，根据实际情况修改
       errMsg: 'auth fail',
-      data: null
+      data: null,
     }
   }
 }

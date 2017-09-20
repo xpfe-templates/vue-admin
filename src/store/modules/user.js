@@ -32,7 +32,7 @@ const user = {
     },
     LOGOUT_USER: state => {
       state.user = ''
-    }
+    },
   },
 
   actions: {
