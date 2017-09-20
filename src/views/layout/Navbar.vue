@@ -8,7 +8,7 @@
   </div>
   <el-dropdown class="navbar-user" trigger="click">
     <div class="navbar-user__wrap">
-      <span class="u-ellipsis">{{ username }}</span>
+      <span class="u-ellipsis">{{ userinfo.username }}</span>
       <i class="iconfont">arrow_drop_down</i>
     </div>
     <el-dropdown-menu class="user-dropdown" slot="dropdown">
@@ -32,7 +32,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['username']),
+    ...mapGetters(['userinfo']),
   },
 
   methods: {

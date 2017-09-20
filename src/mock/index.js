@@ -7,11 +7,11 @@
 */
 
 import Mock from 'mockjs'
-import loginAPI from './login'
+import userAPI from './user'
 
 // 登录相关
-Mock.mock(/\/login/, 'post', loginAPI.login)
-Mock.mock(/\/logout/, 'post', loginAPI.logout)
-Mock.mock(/\/user\/info\.*/, 'get', loginAPI.getUserInfo)
+Mock.mock(/\/user\/login/, 'post', userAPI.login)
+Mock.mock(/\/user\/logout/, 'post', userAPI.logout)
+Mock.mock(/\/user\/info\.*/, 'post', userAPI.getUserInfo)
 
 export default Mock

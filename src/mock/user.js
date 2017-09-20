@@ -6,18 +6,20 @@
  * @desc [login mock]
 */
 
-import { param2Obj } from 'utils'
+// import { param2Obj } from 'utils'
 
 const mockUsers = {
   admin: {
     roles: ['admin'],
     token: 'admin',
     username: '管理员',
+    avatarUrl: 'https://static.excaliburhan.com/demo/img-test-face.jpg',
   },
   user: {
     roles: ['user'],
-    token: ['user'],
+    token: 'user',
     username: '游客',
+    avatarUrl: 'https://static.excaliburhan.com/demo/img-test-face.jpg',
   },
 }
 
@@ -27,35 +29,35 @@ export default {
     if (mockUsers[username]) {
       return {
         code: 0,
-        errMsg: '',
+        errorMsg: '',
         data: mockUsers[username],
       }
     }
     return {
       code: -1,
-      errMsg: '用户不存在',
+      errorMsg: '用户不存在',
       data: null,
     }
   },
   logout: () => {
     return {
       code: 0,
-      errMsg: '',
+      errorMsg: '',
       data: null,
     }
   },
   getUserInfo: config => {
-    const { token } = param2Obj(config.url)
+    const { token } = JSON.parse(config.body)
     if (mockUsers[token]) {
       return {
         code: 0,
-        errMsg: '',
+        errorMsg: '',
         data: mockUsers[token],
       }
     }
     return {
       code: 10004, // TODO，根据实际情况修改
-      errMsg: 'auth fail',
+      errorMsg: 'auth fail',
       data: null,
     }
   }

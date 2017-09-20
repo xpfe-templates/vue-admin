@@ -39,13 +39,17 @@ router.beforeEach((to, from, next) => {
         next({ path: '/' })
       } else {
         if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完userInfo信息
-          store.dispatch('GetUserInfo').then(res => { // 拉取userInfo
+          store.dispatch('GetUserInfo')
+          .then(res => { // 拉取userInfo
             const roles = res.roles
-            store.dispatch('GenerateRoutes', { roles }).then(() => { // 生成可访问的路由表
+            store.dispatch('GenerateRoutes', { roles })
+            .then(() => { // 生成可访问的路由表
               router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
               next({ ...to }) // hack方法 确保addRoutes已完成
             })
-          }).catch(() => {
+            .catch(() => {})
+          })
+          .catch(() => {
             store.dispatch('FeLogOut').then(() => {
               next({ path: '/login' })
             })

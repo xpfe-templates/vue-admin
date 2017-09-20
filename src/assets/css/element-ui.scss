@@ -45,7 +45,7 @@
 }
 
 // input
-.el-input {
+.el-input, .el-textarea {
   &__inner {
     &:focus {
       border-color: #1CCADA;
@@ -78,4 +78,9 @@
       color: #fff;
     }
   }
+}
+
+// dialog
+.el-dialog--600 {
+  width: 600px;
 }

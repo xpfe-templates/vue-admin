@@ -37,9 +37,11 @@ export default {
         this.$message.warning('密码不能为空！')
         return
       }
-      this.$store.dispatch('Login', this.userInfo).then(() => {
+      this.$store.dispatch('Login', this.userInfo)
+      .then(() => {
         this.$router.push({ path: '/' })
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log(err)
       })
     }

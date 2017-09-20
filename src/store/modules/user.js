@@ -6,32 +6,25 @@
  * @desc [用户store，主要放置用户相关]
 */
 
-import { login, logout, getUserInfo } from 'api/login'
+import { login, logout, getUserInfo } from 'api/user'
 import { getToken, setToken, removeToken } from 'utils/auth'
 
 const user = {
   state: {
-    user: '', // TODO, 用户信息
+    userinfo: {}, // 用户信息
     token: getToken(), // 用户token
-    username: '', // 用户名字
     roles: [], // 用户角色
   },
 
   mutations: {
+    SET_USERINFO: (state, userinfo) => {
+      state.userinfo = userinfo
+    },
     SET_TOKEN: (state, token) => {
       state.token = token
     },
-    SET_USERNAME: (state, username) => {
-      state.username = username
-    },
     SET_ROLES: (state, roles) => {
       state.roles = roles
-    },
-    LOGIN_SUCCESS: () => {
-      console.log('login success')
-    },
-    LOGOUT_USER: state => {
-      state.user = ''
     },
   },
 
@@ -42,9 +35,15 @@ const user = {
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(res => {
           const data = res.data
-          setToken(data.token)
-          commit('SET_TOKEN', data.token)
-          resolve()
+          if (res.code === 0) {
+            setToken(data.token)
+            commit('SET_USERINFO', data)
+            commit('SET_TOKEN', data.token)
+            commit('SET_ROLES', data.roles)
+            resolve(data)
+          } else {
+            reject(res.errorMsg)
+          }
         }).catch(error => {
           reject(error)
         })
@@ -54,17 +53,19 @@ const user = {
     // 获取用户信息
     GetUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
-        getUserInfo(state.token).then(res => {
+        getUserInfo(state.token)
+        .then(res => {
           // 如果有具体业务逻辑，则在这里处理
           const data = res.data
-          if (res.code === -1) {
-            reject(res.errMsg)
-          } else {
+          if (res.code === 0) {
+            commit('SET_USERINFO', data)
             commit('SET_ROLES', data.roles)
-            commit('SET_USERNAME', data.username)
             resolve(data)
+          } else {
+            reject(res.errorMsg)
           }
-        }).catch(error => {
+        })
+        .catch(error => {
           reject(error)
         })
       })

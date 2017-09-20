@@ -9,28 +9,26 @@
 import fetch from 'utils/axios'
 
 export function login (username, password) {
-  const data = {
-    username,
-    password
-  }
+  const data = { username, password }
   return fetch({
-    url: '/login',
+    url: '/user/login',
     method: 'post',
-    data
+    data,
   })
 }
 
 export function logout () {
   return fetch({
-    url: '/logout',
-    method: 'post'
+    url: '/user/logout',
+    method: 'post',
   })
 }
 
 export function getUserInfo (token) {
+  const data = { token }
   return fetch({
     url: '/user/info',
-    method: 'get',
-    params: { token }
+    method: 'post',
+    data,
   })
 }

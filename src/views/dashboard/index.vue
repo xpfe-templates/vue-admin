@@ -2,7 +2,7 @@
 <div class="dashboard">
   <div class="dashboard-user" style="height: 800px;" >
     <p>
-      <span>{{ username }}</span>
+      <span>{{ userinfo.username }}</span>
       <span v-for="(role, index) in roles" :key="index">{{ role }}</span>
     </p>
   </div>
@@ -15,7 +15,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'dashboard',
   computed: {
-    ...mapGetters(['username', 'roles']),
+    ...mapGetters(['userinfo', 'roles']),
   },
 
   methods: {
