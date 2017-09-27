@@ -2,35 +2,33 @@
  * @author [author]
  * @email [example@mail.com]
  * @create date 2017-08-11 09:03:57
- * @modify date 2017-08-11 09:03:57
- * @desc [login mock]
+ * @modify date 2017-09-27 02:56:47
+ * @desc [用户mock]
 */
-
-// import { param2Obj } from 'utils'
 
 const mockUsers = {
   admin: {
-    roles: ['admin'],
-    token: 'admin',
-    username: '管理员',
-    avatarUrl: 'https://static.excaliburhan.com/demo/img-test-face.jpg',
+    accessToken: 'admin',
+    userName: '管理员',
+    email: 'admin@startdt.com',
+    avatar: 'https://static.excaliburhan.com/demo/img-test-face.jpg',
   },
   user: {
-    roles: ['user'],
-    token: 'user',
-    username: '游客',
-    avatarUrl: 'https://static.excaliburhan.com/demo/img-test-face.jpg',
+    accessToken: 'user',
+    userName: '游客',
+    email: 'guest@startdt.com',
+    avatar: 'https://static.excaliburhan.com/demo/img-test-face.jpg',
   },
 }
 
 export default {
   login: config => {
-    const { username } = JSON.parse(config.body)
-    if (mockUsers[username]) {
+    const { userName } = JSON.parse(config.body)
+    if (mockUsers[userName]) {
       return {
-        code: 0,
+        code: 200,
         errorMsg: '',
-        data: mockUsers[username],
+        data: mockUsers[userName],
       }
     }
     return {
@@ -39,26 +37,25 @@ export default {
       data: null,
     }
   },
-  logout: () => {
+  loginback: config => {
     return {
-      code: 0,
+      code: 200,
       errorMsg: '',
       data: null,
     }
   },
   getUserInfo: config => {
-    const { token } = JSON.parse(config.body)
-    if (mockUsers[token]) {
-      return {
-        code: 0,
-        errorMsg: '',
-        data: mockUsers[token],
-      }
-    }
     return {
-      code: 10004, // TODO，根据实际情况修改
-      errorMsg: 'auth fail',
+      code: 200,
+      errorMsg: '',
+      data: mockUsers['admin'],
+    }
+  },
+  logout: () => {
+    return {
+      code: 200,
+      errorMsg: '',
       data: null,
     }
-  }
+  },
 }

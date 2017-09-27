@@ -4,7 +4,7 @@
 @import './element-ui.scss';
 @import '../fonts/material-icons.css'; // iconfont直接使用download的，减小更新成本
 
-html {
+html, #app {
   height: 100%;
 }
 

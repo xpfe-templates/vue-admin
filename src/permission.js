@@ -2,7 +2,7 @@
  * @author xiaoping
  * @email edwardhjp@gmail.com
  * @create date 2017-08-24 10:47:03
- * @modify date 2017-08-24 10:47:03
+ * @modify date 2017-09-27 02:58:08
  * @desc [权限]
 */
 
@@ -12,7 +12,7 @@ import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css' // Progress 进度条 样式
 import { getToken } from 'utils/auth' // 验权
 
-const needPermission = true // 是否需要鉴权
+const needPermission = false // 是否需要鉴权生成路由
 
 // 权限判断
 function hasPermission (roles, permissionRoles) {
@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
         if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完userInfo信息
           store.dispatch('GetUserInfo')
           .then(res => { // 拉取userInfo
-            const roles = res.roles
+            const { roles } = res
             store.dispatch('GenerateRoutes', { roles })
             .then(() => { // 生成可访问的路由表
               router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表

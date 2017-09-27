@@ -13,6 +13,7 @@
     "axios": "^0.16.2",
     "element-ui": "^1.4.2",
     "js-cookie": "^2.1.4",
+    "js-md5": "^0.6.0",
     "mockjs": "^1.0.1-beta3",
     "normalize.css": "^7.0.0",
     "nprogress": "^0.2.0",
@@ -22,7 +23,7 @@
     "vuex": "^2.3.1",
     "xp-dom": "^1.0.2",
     "xp-storage": "^1.0.4",
-    "xp-utils": "^1.0.7"
+    "xp-utils": "^1.0.9"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

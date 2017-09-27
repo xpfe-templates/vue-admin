@@ -1,36 +1,21 @@
 <template>
 <div class="dashboard">
-  <div class="dashboard-user" style="height: 800px;" >
-    <p>
-      <span>{{ userinfo.username }}</span>
-      <span v-for="(role, index) in roles" :key="index">{{ role }}</span>
-    </p>
-  </div>
+  <div class="dashboard-main" style="min-height: 800px;" ></div>
 </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'dashboard',
-  computed: {
-    ...mapGetters(['userinfo', 'roles']),
-  },
-
-  methods: {
-    onLogout () {
-      this.$store.dispatch('LogOut').then(() => {
-        location.reload() // 为了重新实例化vue-router对象 避免bug
-      })
-    },
-  },
 }
 </script>
 
 
 <style lang="scss" scoped>
 .dashboard {
-  height: 100%;
+  &-main {
+    padding: 40px 20px;
+    background: #fff;
+  }
 }
 </style>

@@ -8,10 +8,10 @@
   </div>
   <el-dropdown class="navbar-user" trigger="click">
     <div class="navbar-user__wrap">
-      <span class="u-ellipsis">{{ userinfo.username }}</span>
+      <img :src="userInfo.avatar" alt="">
       <i class="iconfont">arrow_drop_down</i>
     </div>
-    <el-dropdown-menu class="user-dropdown" slot="dropdown">
+    <el-dropdown-menu class="navbar-user__dropdown" slot="dropdown">
       <el-dropdown-item><span @click="onLogout" style="display:block;">退出登录</span></el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
@@ -28,19 +28,30 @@ export default {
   components: { errorLog },
   data () {
     return {
-      log: errLogStore.state.errLog,
+      log: errLogStore.state.errLog
     }
   },
   computed: {
-    ...mapGetters(['userinfo']),
+    ...mapGetters(['userInfo']),
   },
 
   methods: {
-    onLogout () {
-      this.$store.dispatch('LogOut').then(() => {
-        location.reload() // 为了重新实例化vue-router对象 避免bug
+    fetchData () {
+      this.$store.dispatch('GetUserInfo')
+      .then(() => {})
+      .catch(error => {
+        this.$message.error(error)
       })
     },
+    onLogout () {
+      this.$store.dispatch('LogOut').then(() => {
+        this.$router.push({ path: '/login' })
+      })
+    },
+  },
+
+  mounted () {
+    this.fetchData()
   },
 }
 </script>
@@ -86,10 +97,12 @@ export default {
     color: #DDDDDD;
     cursor: pointer;
     &__wrap {
-      span {
+      img {
         float: left;
-        max-width: 130px;
-        margin-right: 4px;
+        width: 32px;
+        height: 32px;
+        margin: 14px 4px 0 0;
+        border-radius: 50%;
       }
       .iconfont {
         float: right;

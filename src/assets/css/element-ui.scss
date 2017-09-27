@@ -81,6 +81,99 @@
 }
 
 // dialog
-.el-dialog--600 {
-  width: 600px;
+.el-dialog {
+  &--600 {
+    width: 600px;
+  }
+  &__headerbtn {
+    .el-dialog__close {
+      &:hover {
+        color: #1FE1F2;
+      }
+    }
+  }
+}
+
+// tabs
+.el-tabs {
+  &__active-bar {
+    background-color: #1CCADA;
+  }
+  &__new-tab {
+    &:hover {
+      background-color: #1CCADA;
+    }
+  }
+  &__item {
+    &.is-active {
+      color: #1CCADA;
+    }
+  }
+}
+
+// 面包屑
+.el-breadcrumb {
+  &__item {
+    &__inner {
+      &:hover {
+        color: #1CCADA;
+      }
+    }
+  }
+}
+
+// select
+.el-select {
+  .el-input__inner {
+    &:focus {
+      border-color: #1CCADA;
+    }
+  }
+}
+.el-select-dropdown {
+  &__item {
+    &.selected {
+      background-color: #1CCADA;
+      &.hover {
+        background-color: #1FE1F2;
+      }
+    }
+  }
+}
+
+// 分页
+.el-pager {
+  li {
+    &:hover {
+      color: #1CCADA;
+    }
+    &.active {
+      color: #fff;
+      border-color: #1CCADA;
+      background-color: #1CCADA;
+    }
+  }
+}
+.el-pagination {
+  padding: 12px 0;
+  text-align: right;
+  button {
+    margin-left: 12px;
+    background-color: #1CCADA;
+    &:hover {
+      background: #1FE1F2;
+      border-color: #1FE1F2;
+      color: #fff;
+    }
+    &.is-active, &:active {
+      background: #19B1BF;
+      border-color: #19B1BF;
+      color: #fff;
+    }
+  }
+  &__editor {
+    &:focus {
+      border-color: #1CCADA;
+    }
+  }
 }
