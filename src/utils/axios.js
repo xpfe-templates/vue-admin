@@ -9,11 +9,12 @@
 import axios from 'axios'
 import store from '../store'
 import router from '../router'
+import appConfig from '@/appConfig'
 // import { getToken } from 'utils/auth'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: appConfig.baseURL,
   timeout: 10000,
   withCredentials: true, // 需要登录权限的要带cookie
 })

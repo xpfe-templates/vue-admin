@@ -1,5 +1,3 @@
 module.exports = {
-  NODE_ENV: '"production"',
-  BASE_URL: '"http://api.example.com"',
-  HTML_TITLE: 'VUE-ADMIN'
+  NODE_ENV: '"production"'
 }
