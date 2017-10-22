@@ -6,39 +6,46 @@
  * @desc [login api]
 */
 
-import fetch from 'utils/axios'
+// import fetch from 'utils/axios'
 
-export function login (userName, pwd) {
-  let data = { userName, pwd }
-  data.redirectUri = 'http://localhost:3000'
-  data.operateClientId = 'startdt-admin'
-  return fetch({
-    baseURL: 'http://192.168.2.202:8080', // 调用账号中心
-    url: '/login',
-    method: 'post',
-    data,
-  })
+export default {
+  login: '/login',
+  loginback: '/back',
+  logout: '/auth/user/logOut',
+  getUserInfo: '/auth/user/getPersonInfo'
 }
 
-export function loginback (accessToken, userId) {
-  const data = { accessToken, userId }
-  return fetch({
-    url: '/back',
-    method: 'post',
-    data,
-  })
-}
+// export function login (userName, pwd) {
+//   let data = { userName, pwd }
+//   data.redirectUri = 'http://localhost:3000'
+//   data.operateClientId = 'startdt-admin'
+//   return fetch({
+//     baseURL: 'http://192.168.2.202:8080', // 调用账号中心
+//     url: '/login',
+//     method: 'post',
+//     data,
+//   })
+// }
 
-export function logout () {
-  return fetch({
-    url: '/auth/user/logOut',
-    method: 'post',
-  })
-}
+// export function loginback (accessToken, userId) {
+//   const data = { accessToken, userId }
+//   return fetch({
+//     url: '/back',
+//     method: 'post',
+//     data,
+//   })
+// }
 
-export function getUserInfo () {
-  return fetch({
-    url: '/auth/user/getPersonInfo',
-    method: 'post',
-  })
-}
+// export function logout () {
+//   return fetch({
+//     url: '/auth/user/logOut',
+//     method: 'post',
+//   })
+// }
+
+// export function getUserInfo () {
+//   return fetch({
+//     url: '/auth/user/getPersonInfo',
+//     method: 'post',
+//   })
+// }

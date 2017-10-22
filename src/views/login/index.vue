@@ -21,40 +21,37 @@
 
 <script>
 export default {
-  name: 'login',
-  data () {
+  name: "login",
+  data() {
     return {
       userInfo: {
-        userName: '',
-        pwd: '',
+        userName: "zhouxiaojiang@startdt.com",
+        pwd: "hello1234"
       },
       rules: {
-        userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-        ],
-        pwd: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-        ],
-      },
-    }
+        userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+        pwd: [{ required: true, message: "请输入密码", trigger: "blur" }]
+      }
+    };
   },
 
   methods: {
-    onSubmit () {
+    onSubmit() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.$store.dispatch('Login', this.userInfo)
-          .then(res => {
-            this.$router.push({ path: '/' })
-          })
-          .catch(error => {
-            this.$message.error(error)
-          })
+          this.$store
+            .dispatch("Login", this.userInfo)
+            .then(res => {
+              this.$router.push({ path: "/" });
+            })
+            .catch(error => {
+              this.$message.error(error);
+            });
         }
-      })
+      });
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +60,7 @@ export default {
   position: relative;
   height: 100%;
   color: #fff;
-  background: url('../../assets/img/img-bg-login.jpg') no-repeat;
+  background: url("../../assets/img/img-bg-login.jpg") no-repeat;
   background-size: cover;
   &-title {
     padding: 20px 0 0 20px;

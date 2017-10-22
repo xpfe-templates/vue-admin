@@ -6,9 +6,13 @@
  * @desc [用户store，主要放置用户相关]
 */
 
-import { login, loginback, logout, getUserInfo } from 'api/user'
-import { getToken, setToken, removeToken } from 'utils/auth'
+// import { login, loginback, logout, getUserInfo } from 'api/user'
+
+import api from 'api/user'
+import fetch from 'utils/axios'
+import { getToken, setToken } from 'utils/auth' // setToken removeToken
 import md5 from 'js-md5'
+import { deepClone } from 'xp-utils'
 
 const user = {
   state: {
@@ -32,85 +36,50 @@ const user = {
 
   actions: {
     // 登录
-    Login({ commit }, params) {
-      return new Promise((resolve, reject) => {
-        const userName = params.userName.trim()
-        const encryptedPwd = md5(params.pwd)
-        login(userName, encryptedPwd)
-        .then(res => {
-          if (res.code === 200) {
-            const data = res.data
-            setToken(data.token)
-            commit('SET_TOKEN', data.accessToken)
-            commit('SET_USERID', data.userId)
-            loginback(data.accessToken, data.userId)
-            .then(backRes => {
-              if (backRes.code === 200) {
-                getUserInfo()
-                .then(userRes => {
-                  const userData = userRes.data
-                  if (userRes.code === 200) {
-                    commit('SET_USERINFO', userData)
-                    resolve(userData)
-                  } else {
-                    reject(userRes.errorMsg)
-                  }
-                })
-                .catch(error => {
-                  reject(error)
-                })
-              } else {
-                reject(backRes.errorMsg)
-              }
-            })
-            .catch(error => {
-              reject(error)
-            })
-          } else {
-            reject(res.errorMsg)
-          }
-        })
-        .catch(error => {
-          reject(error)
-        })
+    Login({ commit }, data) {
+      data = deepClone(data)
+      data.userName = data.userName.trim()
+      data.pwd = md5(data.pwd)
+      data.redirectUri = 'http://localhost:3000'
+      data.operateClientId = 'startdt-admin'
+
+      return fetch({
+        baseURL: 'https://auth.startdtapi.com', // 调用账号中心
+        url: api.login,
+        data,
       })
+        .then(res => {
+          const resData = res.data
+          setToken(resData.accessToken)
+          commit('SET_TOKEN', resData.accessToken)
+          commit('SET_USERID', resData.userId)
+          return fetch({
+            url: api.loginback,
+            data: resData
+          })
+        })
+        .then(backRes => {
+          return fetch({
+            url: api.getUserInfo
+          })
+        })
+        .then(userData => {
+          commit('SET_USERINFO', userData)
+        })
     },
     // 获取用户信息
     GetUserInfo({ commit }) {
-      return new Promise((resolve, reject) => {
-        getUserInfo()
-        .then(res => {
-          const data = res.data
-          if (res.code === 200) {
-            commit('SET_USERINFO', data)
-            resolve(data)
-          } else {
-            reject(res.errorMsg)
-          }
-        })
-        .catch(error => {
-          reject(error)
-        })
+      return fetch({
+        url: api.getUserInfo
       })
+        .then(userData => {
+          commit('SET_USERINFO', userData)
+        })
     },
     // 登出
     LogOut({ commit, state }) {
-      return new Promise((resolve, reject) => {
-        logout()
-        .then(res => {
-          const data = res.data
-          if (res.code === 200) {
-            commit('SET_TOKEN', '')
-            commit('SET_USERID', '')
-            removeToken()
-            resolve(data)
-          } else {
-            reject(res.errorMsg)
-          }
-        })
-        .catch(error => {
-          reject(error)
-        })
+      return fetch({
+        url: api.logOut
       })
     },
     // 前端登出
@@ -118,7 +87,7 @@ const user = {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         commit('SET_USERID', '')
-        removeToken()
+        // removeToken()
         resolve()
       })
     },

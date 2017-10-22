@@ -24,6 +24,7 @@ service.interceptors.request.use(config => {
   // 添加统一信息
   if (!config.data) config.data = {} // data没有传默认为{}
   config.data.deviceInfo = 'pc'
+  config.method = 'post' || config.method
   return config
 }, error => {
   console.log('err' + error)

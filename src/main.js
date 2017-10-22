@@ -16,7 +16,7 @@ import 'normalize.css/normalize.css' // normalize.css 样式格式化
 import 'assets/css/index.scss' // 全局样式文件
 import './errLog' // 错误日志
 import './permission' // 权限
-import './mock' // 使用mockjs代理请求
+// import './mock' // 使用mockjs代理请求
 
 // 注册全局filters
 Object.keys(filters).forEach(key => {
