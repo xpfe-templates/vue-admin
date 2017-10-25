@@ -25,8 +25,8 @@ export default {
   data() {
     return {
       userInfo: {
-        userName: "zhouxiaojiang@startdt.com",
-        pwd: "hello1234"
+        userName: 'admin@startdt.com',
+        pwd: 'hello1234',
       },
       rules: {
         userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],

@@ -8,7 +8,7 @@
   </div>
   <el-dropdown class="navbar-user" trigger="click">
     <div class="navbar-user__wrap">
-      <img :src="userInfo.avatar" alt="">
+      <img :src="userInfo.avatar">
       <i class="iconfont">arrow_drop_down</i>
     </div>
     <el-dropdown-menu class="navbar-user__dropdown" slot="dropdown">

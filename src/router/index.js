@@ -8,7 +8,11 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-const _import = require('./_import_' + process.env.NODE_ENV)
+let env = 'development'
+if (process.env.NODE_ENV !== 'development') {
+  env = 'production'
+}
+const _import = require('./_import_' + env)
 
 Vue.use(Router)
 

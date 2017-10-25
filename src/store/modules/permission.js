@@ -12,9 +12,8 @@ import { asyncRouterMap, constantRouterMap } from '@/router'
 function hasPermission (roles, route) {
   if (route.meta && route.meta.role) {
     return roles.some(role => route.meta.role.indexOf(role) >= 0)
-  } else {
-    return true
   }
+  return true
 }
 
 // 递归过滤异步路由表，返回符合用户角色权限的路由表

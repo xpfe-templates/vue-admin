@@ -30,7 +30,6 @@ module.exports = {
       'store': resolve('src/store'),
       'utils': resolve('src/utils'),
       'views': resolve('src/views'),
-      'mock': resolve('src/mock'),
       'static': resolve('static')
     }
   },

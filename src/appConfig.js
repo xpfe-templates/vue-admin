@@ -6,13 +6,24 @@
  * @desc [配置信息]
 */
 
-// const env = process.env.NODE_ENV
-const isProd = process.env.NODE_ENV === 'production'
+const env = process.env.NODE_ENV
 
-const baseURL = isProd ? 'https://boss.startdtapi.com' : 'https://boss.startdtapi.com'
-const htmlTitle = isProd ? 'Vue Admin' : 'Vue Admin - dev'
+let htmlTitle = 'Vue Admin - dev'
+let baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
+let authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+
+if (env === 'production') {
+  htmlTitle = 'Vue Admin'
+  baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
+  authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+} else if (env === 'testing') {
+  htmlTitle = 'Vue Admin - test'
+  baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
+  authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+}
 
 module.exports = {
-  baseURL,
   htmlTitle,
+  baseURL,
+  authURL,
 }

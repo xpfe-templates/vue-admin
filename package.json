@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "build:stats": "npm_config_preview=true  npm_config_report=true node build/build.js",
+    "build:test": "NODE_ENV=testing node build/build.js",
+    "build": "NODE_ENV=production node build/build.js",
+    "build:stats": "NODE_ENV=production npm_config_preview=true npm_config_report=true node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
@@ -23,7 +24,7 @@
     "vuex": "^3.0.0",
     "xp-dom": "^1.0.2",
     "xp-storage": "^1.0.4",
-    "xp-utils": "^1.0.9"
+    "xp-utils": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -38,7 +39,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
-    "eslint-config-xp-fe": "^1.0.9",
+    "eslint-config-xp": "^1.1.7",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eventsource-polyfill": "^0.9.6",
