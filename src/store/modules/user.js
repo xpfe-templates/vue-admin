@@ -8,7 +8,7 @@
 
 import md5 from 'js-md5'
 import api from 'api/urls'
-import request from 'utils/axios'
+import request from 'api/request'
 import appConfig from '@/appConfig'
 import { getToken, setToken, removeToken } from 'utils/auth' // setToken removeToken
 import { deepClone } from 'xp-utils'
@@ -31,42 +31,6 @@ const user = {
   actions: {
     // 登录
     Login({ commit }, data) {
-<<<<<<< HEAD
-      data = deepClone(data)
-      data.userName = data.userName.trim()
-      data.pwd = md5(data.pwd)
-      data.redirectUri = 'http://localhost:3000'
-      data.operateClientId = 'startdt-admin'
-
-      return fetch({
-        baseURL: 'https://auth.startdtapi.com', // 调用账号中心
-        url: api.login,
-        data,
-      })
-        .then(res => {
-          const resData = res.data
-          setToken(resData.accessToken)
-          commit('SET_TOKEN', resData.accessToken)
-          commit('SET_USERID', resData.userId)
-          return fetch({
-            url: api.loginback,
-            data: resData
-          })
-        })
-        .then(backRes => {
-          return fetch({
-            url: api.getUserInfo
-          })
-        })
-        .then(userData => {
-          commit('SET_USERINFO', userData)
-        })
-    },
-    // 获取用户信息
-    GetUserInfo({ commit }) {
-      return fetch({
-        url: api.getUserInfo
-=======
       data = deepClone(data) // 需要修改输入参数，深拷贝
       data.userName = data.userName.trim()
       data.pwd = md5(data.pwd)
@@ -103,19 +67,11 @@ const user = {
       })
       .then(userData => {
         commit('SET_USERINFO', userData)
->>>>>>> update template
       })
-        .then(userData => {
-          commit('SET_USERINFO', userData)
-        })
     },
     // 登出
     LogOut({ commit, state }) {
-<<<<<<< HEAD
-      return fetch({
-=======
       return request({
->>>>>>> update template
         url: api.logOut
       })
     },
@@ -123,12 +79,7 @@ const user = {
     FeLogOut({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
-<<<<<<< HEAD
-        commit('SET_USERID', '')
-        // removeToken()
-=======
         removeToken()
->>>>>>> update template
         resolve()
       })
     },
