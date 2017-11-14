@@ -25,9 +25,7 @@ service.interceptors.request.use(config => {
   // 添加统一信息
   if (!config.data) config.data = {}
   // config.data.deviceInfo = 'admin'
-  // 采用入侵式传参，需要删除多余的入参
-  config.method = config.data.requestMethod || 'post'
-  delete config.data.requestMethod
+  config.method = config.requestMethod || 'post'
   return config
 }, error => {
   Promise.reject(error)
