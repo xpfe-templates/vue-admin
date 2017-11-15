@@ -9,9 +9,6 @@ var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
 
-console.log(env)
-console.log(env === 'production')
-
 var spinner = ora('building for ' + env + '...')
 spinner.start()
 
