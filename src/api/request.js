@@ -2,7 +2,7 @@
  * @author xiaoping
  * @email edwardhjp@gmail.com
  * @create date 2017-08-03 12:05:37
- * @modify date 2017-09-27 02:54:11
+ * @modify date 2017-11-16 08:23:36
  * @desc [axios改造]
 */
 
@@ -10,8 +10,6 @@ import axios from 'axios'
 import store from '@/store'
 import router from '@/router'
 import appConfig from '@/appConfig'
-
-const CODE_SUCCESS = 200 // 请求成功
 
 // 创建axios实例
 const service = axios.create({
@@ -23,8 +21,16 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(config => {
   // 添加统一信息
-  if (!config.data) config.data = {}
-  // config.data.deviceInfo = 'admin'
+  config.data = config.data || {}
+  config.data.deviceInfo = appConfig.deviceInfo
+  // 修正method
+  if (config.requestMethod) {
+    config.requestMethod = config.requestMethod.toLocaleLowerCase()
+  }
+  if (config.requestMethod === 'get') {
+    config.params = config.data
+    config.data = {}
+  }
   config.method = config.requestMethod || 'post'
   return config
 }, error => {
@@ -35,23 +41,23 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(
   response => {
     const res = response.data
-    // 通过response自定义code来标示请求状态，当code返回如下情况为权限有问题，登出并返回到登录页
-    // 根据系统的状态码写判断
-    if (res.code === CODE_SUCCESS) {
+    // success表示业务成功，直接resolve
+    if (res.success) {
       return Promise.resolve(res)
     }
-    // 无权限需要重新登录
-    if (res.code === 30002 || res.code === 30004) {
-      store.dispatch('FeLogOut').then(() => {
-        router.push({ path: '/login' })
-      })
-      return Promise.reject(res)
-    }
+    // 没有权限
+    // if (res.codeNum === appConfig.authErrorCode) {
+    //   store.dispatch('FeLogOut')
+    //   .then(() => {
+    //     router.push({ path: '/login' })
+    //   })
+    //   return Promise.reject(res)
+    // }
     return Promise.reject(res)
   },
   error => {
     console.log('err:' + error)
-    return Promise.reject({ errorMsg: '系统异常' })
+    return Promise.reject({ codeDesc: '系统异常' })
   }
 )
 

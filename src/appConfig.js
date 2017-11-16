@@ -8,23 +8,25 @@
 
 const env = process.env.NODE_ENV
 
-const tokenKey = 'admin-token'
+const deviceInfo = '' // 应用信息
+const authErrorCode = 3000 // 没有权限的错误码
 let htmlTitle = 'Vue Admin - dev'
-let baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
+let baseURL = 'https://www.easy-mock.com/mock/5a0bf56bdbfe9e4cbd641706/unmanned'
 let authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
 
 if (env === 'production') {
   htmlTitle = 'Vue Admin'
-  baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
-  authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+  baseURL = 'https://api.example.com'
+  authURL = 'https://auth.example.com'
 } else if (env === 'testing') {
   htmlTitle = 'Vue Admin - test'
-  baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
-  authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+  baseURL = 'https://apitest.example.com'
+  authURL = 'https://authtest.example.com'
 }
 
 module.exports = {
-  tokenKey,
+  deviceInfo,
+  authErrorCode,
   htmlTitle,
   baseURL,
   authURL,
