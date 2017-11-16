@@ -8,6 +8,7 @@
 
 const env = process.env.NODE_ENV
 
+const tokenKey = 'admin-token'
 let htmlTitle = 'Vue Admin - dev'
 let baseURL = 'https://www.easy-mock.com/mock/59eff97c7af0b52dd53c60ae/screen'
 let authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
@@ -23,6 +24,7 @@ if (env === 'production') {
 }
 
 module.exports = {
+  tokenKey,
   htmlTitle,
   baseURL,
   authURL,
