@@ -21,37 +21,36 @@
 
 <script>
 export default {
-  name: "login",
-  data() {
+  name: 'login',
+  data () {
     return {
       userInfo: {
         userName: 'admin@startdt.com',
         pwd: 'hello1234',
       },
       rules: {
-        userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-        pwd: [{ required: true, message: "请输入密码", trigger: "blur" }]
+        userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        pwd: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       }
-    };
+    }
   },
 
   methods: {
     onSubmit() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.$store
-            .dispatch("Login", this.userInfo)
-            .then(res => {
-              this.$router.push({ path: "/" });
-            })
-            .catch(error => {
-              this.$message.error(error);
-            });
+          this.$store.dispatch('Login', this.userInfo)
+          .then(res => {
+            this.$router.push({ path: '/' })
+          })
+          .catch(err => {
+            this.$message.error(err.codeDesc)
+          });
         }
-      });
+      })
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss" scoped>

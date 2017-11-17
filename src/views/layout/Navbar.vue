@@ -36,22 +36,12 @@ export default {
   },
 
   methods: {
-    fetchData () {
-      this.$store.dispatch('GetUserInfo')
-      .then(() => {})
-      .catch(error => {
-        this.$message.error(error)
-      })
-    },
     onLogout () {
-      this.$store.dispatch('LogOut').then(() => {
+      this.$store.dispatch('LogOut')
+      .then(() => {
         this.$router.push({ path: '/login' })
       })
     },
-  },
-
-  mounted () {
-    this.fetchData()
   },
 }
 </script>

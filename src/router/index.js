@@ -28,9 +28,8 @@ Vue.use(Router)
 // 全局需要的layout页面
 import Layout from 'views/layout/Layout'
 
-export const constantRouterMap = [
+export const constMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
-  { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('error/404'), hidden: true },
   { path: '/401', component: _import('error/401'), hidden: true },
   {
@@ -62,10 +61,9 @@ export const constantRouterMap = [
 export default new Router({
   mode: 'history', // 需要nginx支持，如果不需要暴露URL的，例如大屏，可以改为hash
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+  routes: constMap
 })
 
-export const asyncRouterMap = [
+export const asyncMap = [
   { path: '*', redirect: '/404', hidden: true }
 ]
-

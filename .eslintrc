@@ -1,8 +1,5 @@
 {
   "root": true,
   "extends": "xp",
-  "env": {},
-  "plugins": [],
-  "globals": {},
   "rules": {}
 }

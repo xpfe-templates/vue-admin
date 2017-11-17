@@ -6,7 +6,7 @@
  * @desc [权限store，主要放置权限相关]
 */
 
-import { asyncRouterMap, constantRouterMap } from '@/router'
+import { asyncMap, constMap } from '@/router'
 
 // 通过meta.role判断是否与当前用户权限匹配
 function hasPermission (roles, route) {
@@ -17,41 +17,41 @@ function hasPermission (roles, route) {
 }
 
 // 递归过滤异步路由表，返回符合用户角色权限的路由表
-function filterAsyncRouter(asyncRouterMap, roles) {
-  const accessedRouters = asyncRouterMap.filter(route => {
+function filterRouter (asyncMap, roles) {
+  const accesseRouters = asyncMap.filter(route => {
     if (hasPermission(roles, route)) {
       if (route.children && route.children.length) {
-        route.children = filterAsyncRouter(route.children, roles)
+        route.children = filterRouter(route.children, roles)
       }
       return true
     }
     return false
   })
-  return accessedRouters
+  return accesseRouters
 }
 
 const permission = {
   state: {
-    routers: constantRouterMap,
+    routers: constMap,
     addRouters: [],
   },
   mutations: {
     SET_ROUTERS: (state, routers) => {
       state.addRouters = routers
-      state.routers = constantRouterMap.concat(routers)
+      state.routers = constMap.concat(routers)
     },
   },
   actions: {
-    GenerateRoutes({ commit }, data) {
+    GenerateRoutes({ commit }, params) {
       return new Promise(resolve => {
-        const { roles } = data
-        let accessedRouters
-        if (roles.indexOf('admin') >= 0) { // admin拥有所有权限
-          accessedRouters = asyncRouterMap
+        const { roles } = params
+        let accesseRouters
+        if (!roles) { // 没有定义角色的系统，直接认为可以访问
+          accesseRouters = asyncMap
         } else {
-          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+          accesseRouters = filterRouter(asyncMap, roles)
         }
-        commit('SET_ROUTERS', accessedRouters)
+        commit('SET_ROUTERS', accesseRouters)
         resolve()
       })
     },

@@ -2,12 +2,11 @@
  * @author xiaoping
  * @email edwardhjp@gmail.com
  * @create date 2017-08-03 12:05:37
- * @modify date 2017-11-16 08:23:36
+ * @modify date 2017-11-17 11:28:22
  * @desc [axios改造]
 */
 
 import axios from 'axios'
-import store from '@/store'
 import router from '@/router'
 import appConfig from '@/appConfig'
 
@@ -40,19 +39,31 @@ service.interceptors.request.use(config => {
 // response拦截器
 service.interceptors.response.use(
   response => {
-    const res = response.data
+    let res = response.data
+    // 兼容auth老系统代码
+    if (res.code !== undefined) { // 这是auth系统的老代码
+      res = {
+        success: res.code === 200,
+        codeNum: res.code,
+        codeDesc: res.msg,
+        value: {
+          data: res.data,
+        },
+      }
+    } else {
+      // 兼容value=""的情况
+      if (!res.value) {
+        res.value = { data: '' }
+      }
+    }
     // success表示业务成功，直接resolve
     if (res.success) {
       return Promise.resolve(res)
     }
     // 没有权限
-    // if (res.codeNum === appConfig.authErrorCode) {
-    //   store.dispatch('FeLogOut')
-    //   .then(() => {
-    //     router.push({ path: '/login' })
-    //   })
-    //   return Promise.reject(res)
-    // }
+    if (res.codeNum === appConfig.authErrorCode) {
+      router.push({ path: '/login' })
+    }
     return Promise.reject(res)
   },
   error => {

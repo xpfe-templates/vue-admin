@@ -12,15 +12,15 @@ import storage from 'xp-storage'
 import tokenKey from '@/appConfig'
 
 export function getToken () {
-  return storage.get(TokenKey)
+  return storage.get(tokenKey)
 }
 
 export function setToken (token) {
-  return storage.set(TokenKey, token)
+  return storage.set(tokenKey, token)
 }
 
 export function removeToken () {
-  return storage.remove(TokenKey)
+  return storage.remove(tokenKey)
 }
 
 // cookies
