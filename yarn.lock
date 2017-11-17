@@ -1295,7 +1295,7 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@*, commander@2.11.x, commander@^2.9.0, commander@~2.11.0:
+commander@2.11.x, commander@^2.9.0, commander@~2.11.0:
   version "2.11.0"
   resolved "https://registry.npmjs.org/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
@@ -1875,9 +1875,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-xp@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.npmjs.org/eslint-config-xp/-/eslint-config-xp-1.1.7.tgz#6d3231ad5bc915061ac35aa2404350c3c45c65c2"
+eslint-config-xp@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/eslint-config-xp/-/eslint-config-xp-1.1.8.tgz#fd27d97e32d6b7c0a37134160d15c07d78ba5e9d"
   dependencies:
     babel-eslint "^8.0.1"
     eslint "^4.9.0"
@@ -3440,12 +3440,6 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
-
-mockjs@^1.0.1-beta3:
-  version "1.0.1-beta3"
-  resolved "https://registry.npmjs.org/mockjs/-/mockjs-1.0.1-beta3.tgz#d234f3c27256397564f2c955142e891909537209"
-  dependencies:
-    commander "*"
 
 ms@2.0.0:
   version "2.0.0"
