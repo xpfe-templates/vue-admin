@@ -31,7 +31,6 @@ import Layout from 'views/layout/Layout'
 export const constMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
   { path: '/404', component: _import('error/404'), hidden: true },
-  { path: '/401', component: _import('error/401'), hidden: true },
   {
     path: '/',
     component: Layout,
