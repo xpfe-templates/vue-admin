@@ -2,7 +2,7 @@
  * @author xiaoping
  * @email edwardhjp@gmail.com
  * @create date 2017-08-03 12:05:37
- * @modify date 2017-11-17 11:28:22
+ * @modify date 2017-09-27 02:54:11
  * @desc [axios改造]
 */
 
@@ -46,14 +46,12 @@ service.interceptors.response.use(
         success: res.code === 200,
         codeNum: res.code,
         codeDesc: res.msg,
-        value: {
-          data: res.data,
-        },
+        value: res.data,
       }
     } else {
       // 兼容value=""的情况
       if (!res.value) {
-        res.value = { data: '' }
+        res.value = {}
       }
     }
     // success表示业务成功，直接resolve

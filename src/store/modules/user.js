@@ -7,8 +7,8 @@
 */
 
 import md5 from 'js-md5'
+import api from 'api/urls'
 import request from 'api/request'
-import urls from 'api/urls'
 import appConfig from '@/appConfig'
 import { deepClone } from 'xp-utils'
 
@@ -40,14 +40,14 @@ const user = {
 
       return request({
         baseURL: appConfig.authURL,
-        url: urls.login,
+        url: api.login,
         data,
       })
       .then(res => {
-        const backRes = res.value.data
+        const backRes = res.value
         commit('SET_TOKEN', backRes.accessToken)
         return request({
-          url: urls.loginback,
+          url: api.loginback,
           data: backRes,
         })
       })
@@ -58,20 +58,20 @@ const user = {
     // 获取用户信息
     GetUserInfo({ commit, state}) {
       return request({
-        url: urls.getUserInfo,
+        url: api.getUserInfo,
       })
       .then(userRes => {
         if (!state.accessToken) { // 如果直接访问不经过login，防止router钩子死循环
           commit('SET_TOKEN', 'noToken')
         }
-        commit('SET_USERINFO', userRes.value.data)
+        commit('SET_USERINFO', userRes.value)
         return userRes
       })
     },
     // 登出
     LogOut({ commit, state }) {
       return request({
-        url: urls.logOut,
+        url: api.logOut,
       })
     },
     // 前端登出，删除token
