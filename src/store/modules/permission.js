@@ -36,13 +36,13 @@ const permission = {
     addRouters: [],
   },
   mutations: {
-    SET_ROUTERS: (state, routers) => {
+    SET_ROUTERS (state, routers) {
       state.addRouters = routers
       state.routers = constMap.concat(routers)
     },
   },
   actions: {
-    GenerateRoutes({ commit }, params) {
+    GenerateRoutes ({ commit }, params) {
       return new Promise(resolve => {
         const { roles } = params
         let accesseRouters

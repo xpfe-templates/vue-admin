@@ -1,5 +1,5 @@
 <template>
-<el-menu class="navbar" mode="horizontal" theme="dark">
+<el-menu class="navbar" mode="horizontal" background-color="#03181A" text-color="#fff" active-text-color="#fff">
   <a href="javascript:;" class="navbar-logo"></a>
   <slot name="left"></slot>
   <div class="navbar-right">
@@ -8,7 +8,7 @@
   </div>
   <el-dropdown class="navbar-user" trigger="click">
     <div class="navbar-user__wrap">
-      <img :src="userInfo.avatar">
+      <span>{{userInfo.email}}</span>
       <i class="iconfont">arrow_drop_down</i>
     </div>
     <el-dropdown-menu class="navbar-user__dropdown" slot="dropdown">
@@ -43,6 +43,10 @@ export default {
       })
     },
   },
+
+  mounted () {
+    this.$store.dispatch('GetUserInfo')
+  },
 }
 </script>
 
@@ -56,7 +60,6 @@ export default {
   right: 0;
   height: 60px;
   line-height: 60px;
-  border-radius: 0px !important;
   &-logo {
     position: absolute;
     top: 0;

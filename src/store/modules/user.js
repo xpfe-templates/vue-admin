@@ -21,17 +21,17 @@ const user = {
   },
 
   mutations: {
-    SET_TOKEN: (state, data) => {
+    SET_TOKEN (state, data) {
       state.accessToken = data
     },
-    SET_USERINFO: (state, data) => {
+    SET_USERINFO (state, data) {
       state.userInfo = data
     },
   },
 
   actions: {
     // 登录
-    Login({ commit }, data) {
+    Login ({ commit }, data) {
       data = deepClone(data) // 需要修改输入参数，深拷贝
       data.userName = data.userName.trim()
       data.pwd = md5(data.pwd)
@@ -56,7 +56,7 @@ const user = {
       })
     },
     // 获取用户信息
-    GetUserInfo({ commit, state}) {
+    GetUserInfo ({ commit, state}) {
       return request({
         url: api.getUserInfo,
       })
@@ -69,13 +69,13 @@ const user = {
       })
     },
     // 登出
-    LogOut({ commit, state }) {
+    LogOut ({ commit, state }) {
       return request({
         url: api.logOut,
       })
     },
     // 前端登出，删除token
-    FeLogOut({ commit }) {
+    FeLogOut ({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         resolve()
