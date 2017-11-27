@@ -201,9 +201,11 @@ async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://registry.npmjs.org/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
 
-async-validator@1.6.9:
-  version "1.6.9"
-  resolved "https://registry.npmjs.org/async-validator/-/async-validator-1.6.9.tgz#a8309daa8b83421cdbd4628e026d6abb25192d34"
+async-validator@~1.8.1:
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/async-validator/-/async-validator-1.8.1.tgz#6665788ca39269af770e5ee02f0e557f2438d2ca"
+  dependencies:
+    babel-runtime "6.x"
 
 async@^2.1.2, async@^2.1.5, async@^2.4.1:
   version "2.5.0"
@@ -812,7 +814,7 @@ babel-register@^6.22.0, babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@6.x, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.npmjs.org/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -1746,11 +1748,11 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.18:
   version "1.3.22"
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.22.tgz#4322d52c151406e3eaef74ad02676883e8416418"
 
-element-ui@^1.4.2:
-  version "1.4.6"
-  resolved "https://registry.npmjs.org/element-ui/-/element-ui-1.4.6.tgz#2f4f718fb3b12f23ef6508251adfae80d7f81793"
+element-ui@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/element-ui/-/element-ui-2.0.5.tgz#e001cb3514d8303a54f2b7d893b916acfc9ac57d"
   dependencies:
-    async-validator "1.6.9"
+    async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
     deepmerge "^1.2.0"
     throttle-debounce "^1.0.1"
@@ -3026,10 +3028,6 @@ isstream@~0.1.2:
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.3.2"
   resolved "https://registry.npmjs.org/js-base64/-/js-base64-2.3.2.tgz#a79a923666372b580f8e27f51845c6f7e8fbfbaf"
-
-js-cookie@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.npmjs.org/js-cookie/-/js-cookie-2.1.4.tgz#da4ec503866f149d164cf25f579ef31015025d8d"
 
 js-md5@^0.6.0:
   version "0.6.0"
@@ -5481,17 +5479,13 @@ xml-char-classes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
 
-xp-dom@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/xp-dom/-/xp-dom-1.0.2.tgz#8ac3084e24196134c54a6ebd8a97ebb337d2112d"
-
 xp-storage@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/xp-storage/-/xp-storage-1.0.4.tgz#d70a8ec63694f84cd61596113395b97bfb8e1162"
 
-xp-utils@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/xp-utils/-/xp-utils-1.1.0.tgz#a9e02a15ddee109a0d25520855e21efe1ac6dd9c"
+xp-utils@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/xp-utils/-/xp-utils-1.1.1.tgz#af41b23c4596983415d404d01717c484227333c2"
 
 xtend@^4.0.0:
   version "4.0.1"

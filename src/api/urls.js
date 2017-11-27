@@ -10,6 +10,6 @@ export default {
   // 登录
   login: '/login',
   loginback: '/back',
-  logOut: '/user/logOut',
-  getUserInfo: '/user/getPersonInfo',
+  logout: '/logout',
+  getUserInfo: '/auth/personInfo',
 }

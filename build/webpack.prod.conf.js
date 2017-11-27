@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var appConfig = require('../src/appConfig')
+var publicPath = process.env.NODE_ENV === 'testing' ? '/' + appConfig.gitDir : config.build.assetsPublicPath
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -24,6 +25,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
+    publicPath,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },

@@ -37,7 +37,7 @@ export const constMap = [
     redirect: '/dashboard',
     // hidden: true,
     icon: 'home',
-    isSlash: true,
+    isSlash: true, // 只在这里使用
     noDropdown: true,
     children: [
       { path: 'dashboard', component: _import('dashboard/index'), name: '首页' }
@@ -58,7 +58,8 @@ export const constMap = [
 ]
 
 export default new Router({
-  mode: 'history', // 需要nginx支持，如果不需要暴露URL的，例如大屏，可以改为hash
+  // 需要nginx支持，如果不需要暴露URL的，例如大屏，可以改为hash
+  mode: process.env.NODE_ENV === 'testing' ? 'hash' : 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: constMap
 })

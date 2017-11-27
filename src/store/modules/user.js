@@ -11,13 +11,12 @@ import api from 'api/urls'
 import request from 'api/request'
 import appConfig from '@/appConfig'
 import { deepClone } from 'xp-utils'
+import storage from 'xp-storage'
 
 const user = {
   state: {
     accessToken: '', // 用户token
-    userInfo: {
-      avatar: '//startdtadmin.oss-cn-hangzhou.aliyuncs.com/img/1508394711614.jpg', // 默认头像
-    },
+    userInfo: {},
   },
 
   mutations: {
@@ -35,11 +34,11 @@ const user = {
       data = deepClone(data) // 需要修改输入参数，深拷贝
       data.userName = data.userName.trim()
       data.pwd = md5(data.pwd)
+      data.operateClientId = appConfig.clientId
       data.redirectUri = appConfig.redirectUri
-      data.operateClientId = appConfig.operateClientId
 
       return request({
-        baseURL: appConfig.authURL,
+        baseURL: appConfig.authUrl,
         url: api.login,
         data,
       })
@@ -57,28 +56,23 @@ const user = {
     },
     // 获取用户信息
     GetUserInfo ({ commit, state}) {
+      if (storage.get('user')) {
+        commit('SET_USERINFO', storage.get('user'))
+        return new Promise((resolve) => { resolve() })
+      }
       return request({
         url: api.getUserInfo,
       })
       .then(userRes => {
-        if (!state.accessToken) { // 如果直接访问不经过login，防止router钩子死循环
-          commit('SET_TOKEN', 'noToken')
-        }
         commit('SET_USERINFO', userRes.value)
+        storage.set('user', userRes.value)
         return userRes
       })
     },
     // 登出
-    LogOut ({ commit, state }) {
+    Logout ({ commit, state }) {
       return request({
-        url: api.logOut,
-      })
-    },
-    // 前端登出，删除token
-    FeLogOut ({ commit }) {
-      return new Promise(resolve => {
-        commit('SET_TOKEN', '')
-        resolve()
+        url: api.logout,
       })
     },
   }

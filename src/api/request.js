@@ -12,9 +12,9 @@ import appConfig from '@/appConfig'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: appConfig.baseURL,
+  baseURL: appConfig.baseUrl,
   timeout: 10 * 1000,
-  withCredentials: process.env.NODE_ENV !== 'development', // 需要登录权限的要带cookie
+  withCredentials: true, // 需要登录权限的要带cookie
 })
 
 // request拦截器
@@ -43,7 +43,7 @@ service.interceptors.response.use(
     // 兼容auth老系统代码
     if (res.code !== undefined) { // 这是auth系统的老代码
       res = {
-        success: res.code === 200,
+        success: res.code === 0,
         codeNum: res.code,
         codeDesc: res.msg,
         value: res.data,
@@ -59,7 +59,7 @@ service.interceptors.response.use(
       return Promise.resolve(res)
     }
     // 没有权限
-    if (res.codeNum === appConfig.authErrorCode) {
+    if (appConfig.authCodes.includes(res.codeNum)) {
       router.push({ path: '/login' })
     }
     return Promise.reject(res)

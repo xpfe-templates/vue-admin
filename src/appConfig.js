@@ -8,28 +8,31 @@
 
 const env = process.env.NODE_ENV
 
-const tokenKey = 'admin-token'
-const deviceInfo = '' // 应用信息
-const authErrorCode = 3000 // 没有权限的错误码
-let htmlTitle = 'Vue Admin - dev'
-let baseURL = 'https://www.easy-mock.com/mock/5a0bf56bdbfe9e4cbd641706/unmanned'
-let authURL = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+const gitDir = 'vue-admin' // 用户自动部署目录，必须和git目录或者jenkins的创建目录一致，影响history路由
+const clientId = '' // 应用名称
+const redirectUri = '' // auth登录跳转链接
+const authCodes = [2003] // 没有权限的错误码
 
-if (env === 'production') {
+let htmlTitle = 'Vue Admin - dev'
+let baseUrl = 'https://www.easy-mock.com/mock/5a0bf56bdbfe9e4cbd641706/unmanned'
+let authUrl = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+
+if (env === 'production') { // 生产环境
   htmlTitle = 'Vue Admin'
-  baseURL = '//api.example.com'
-  authURL = '//auth.example.com'
-} else if (env === 'testing') {
+  baseUrl = '//api.example.com'
+  authUrl = '//auth.example.com'
+} else if (env === 'testing') { // 测试环境
   htmlTitle = 'Vue Admin - test'
-  baseURL = '//apitest.example.com'
-  authURL = '//authtest.example.com'
+  baseUrl = '//apitest.example.com'
+  authUrl = '//authtest.example.com'
 }
 
 module.exports = {
-  tokenKey,
-  deviceInfo,
-  authErrorCode,
+  gitDir,
+  clientId,
+  redirectUri,
+  authCodes,
   htmlTitle,
-  baseURL,
-  authURL,
+  baseUrl,
+  authUrl,
 }

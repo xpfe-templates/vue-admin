@@ -1,5 +1,5 @@
 <template>
-<el-menu class="sidebar el-menu--gray" mode="vertical" theme="dark" :default-active="$route.path">
+<el-menu class="sidebar" mode="vertical" :default-active="$route.path" background-color="#052326" text-color="#fff" active-text-color="#fff">
   <sidebar-item :routes="permissionRouters"></sidebar-item>
 </el-menu>
 </template>
@@ -26,7 +26,6 @@ export default {
   left: 0;
   width: 180px;
   height: 100%;
-  border-radius: 0px !important;
   overflow-y: auto;
 }
 </style>

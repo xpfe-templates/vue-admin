@@ -26,8 +26,10 @@ export default {
   bottom: 0;
   overflow-y: auto;
   & > div {
-    min-height: calc(100% - 60px);
-    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+    min-height: calc(100% - 40px);
+    margin: 20px;
   }
 }
 </style>

@@ -1,147 +1,28 @@
 // element-ui的重置样式
-// menu
+// menu菜单
 .el-menu {
-  &-iconfont {
-    vertical-align: -3px;
-    margin-right: 12px;
+  &--horizontal {
+    border-bottom: none !important;
   }
-  &--dark {
-    color: #ddd;
-    background: #373D41;
-  }
-  &--gray {
-    color: #A7B1C2;
-    background: #42485B;
-    .el-menu-item, .el-submenu__title {
-      height: 46px;
-      line-height: 46px;
-      color: #A7B1C2;
-      &:hover {
-        color: #fff;
-        background: #555B6A;
-      }
-      &.is-active {
-        color: #1CCADA;
-      }
+  &-item {
+    &.is-active {
+      background: #1CCADA !important;
     }
-    .el-submenu .el-menu {
-      background: #383D41;
-      .el-menu-item:hover {
-        color: #fff;
-        background: #555B6A;
-      }
-    }
-    &.el-menu--horizontal .el-submenu .el-menu-item.is-active {
-      color: #1CCADA;
+    i {
+      color: #fff !important;
     }
   }
 }
 .el-submenu {
-  .el-menu-item {
-    height: 40px;
-    line-height: 40px;
-    min-width: 180px !important;
-  }
-}
-
-// input
-.el-input, .el-textarea {
-  &__inner {
-    &:focus {
-      border-color: #1CCADA;
+  &__title {
+    color: #fff !important;
+    i {
+      color: #fff !important;
     }
   }
 }
 
-// 按钮
-.el-button {
-  &:focus, &:hover {
-    color: #1FE1F2;
-    border-color: #1FE1F2;
-  }
-  &:active {
-    color: #19B1BF;
-    border-color: #19B1BF;
-  }
-  &--primary {
-    color: #fff;
-    background-color: #1CCADA;
-    border-color: #1CCADA;
-    &:focus, &:hover {
-      background: #1FE1F2;
-      border-color: #1FE1F2;
-      color: #fff;
-    }
-    &.is-active, &:active {
-      background: #19B1BF;
-      border-color: #19B1BF;
-      color: #fff;
-    }
-  }
-}
-
-// dialog
-.el-dialog {
-  &--600 {
-    width: 600px;
-  }
-  &__headerbtn {
-    .el-dialog__close {
-      &:hover {
-        color: #1FE1F2;
-      }
-    }
-  }
-}
-
-// tabs
-.el-tabs {
-  &__active-bar {
-    background-color: #1CCADA;
-  }
-  &__new-tab {
-    &:hover {
-      background-color: #1CCADA;
-    }
-  }
-  &__item {
-    &.is-active {
-      color: #1CCADA;
-    }
-  }
-}
-
-// 面包屑
-.el-breadcrumb {
-  &__item {
-    &__inner {
-      &:hover {
-        color: #1CCADA;
-      }
-    }
-  }
-}
-
-// select
-.el-select {
-  .el-input__inner {
-    &:focus {
-      border-color: #1CCADA;
-    }
-  }
-}
-.el-select-dropdown {
-  &__item {
-    &.selected {
-      background-color: #1CCADA;
-      &.hover {
-        background-color: #1FE1F2;
-      }
-    }
-  }
-}
-
-// 分页
+// pager分页
 .el-pager {
   li {
     &:hover {
