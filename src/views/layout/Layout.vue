@@ -8,7 +8,7 @@
 
 <script>
 // 注意：是否需要sidebar和navbar根据实际需要选择
-import { AppMain, Navbar, Sidebar } from 'views/layout'
+import { AppMain, Navbar, Sidebar } from '@/views/layout'
 
 export default {
   name: 'Layout',

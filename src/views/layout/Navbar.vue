@@ -20,8 +20,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import errorLog from 'components/ErrorLog'
-import errLogStore from 'store/errLog'
+import errorLog from '@/components/ErrorLog'
+import errLogStore from '@/store/errLog'
 
 export default {
   name: 'Navbar',

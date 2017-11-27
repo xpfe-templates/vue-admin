@@ -7,8 +7,8 @@
 */
 
 import md5 from 'js-md5'
-import api from 'api/urls'
-import request from 'api/request'
+import api from '@/api/urls'
+import request from '@/api/request'
 import appConfig from '@/appConfig'
 import { deepClone } from 'xp-utils'
 import storage from 'xp-storage'
@@ -73,6 +73,11 @@ const user = {
     Logout ({ commit, state }) {
       return request({
         url: api.logout,
+      })
+      .then(res => {
+        commit('SET_USERINFO', {})
+        storage.remove('user')
+        return res
       })
     },
   }

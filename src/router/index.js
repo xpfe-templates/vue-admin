@@ -26,7 +26,7 @@ Vue.use(Router)
 */
 
 // 全局需要的layout页面
-import Layout from 'views/layout/Layout'
+import Layout from '@/views/layout/Layout'
 
 export const constMap = [
   { path: '/login', component: _import('login/index'), hidden: true },

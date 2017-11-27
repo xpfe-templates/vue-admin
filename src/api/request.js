@@ -9,6 +9,7 @@
 import axios from 'axios'
 import router from '@/router'
 import appConfig from '@/appConfig'
+import storage from 'xp-storage'
 
 // 创建axios实例
 const service = axios.create({
@@ -60,6 +61,7 @@ service.interceptors.response.use(
     }
     // 没有权限
     if (appConfig.authCodes.includes(res.codeNum)) {
+      storage.remove('user') // 退出登录需要清除storage中user信息
       router.push({ path: '/login' })
     }
     return Promise.reject(res)
