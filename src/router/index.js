@@ -58,8 +58,8 @@ export const constMap = [
 ]
 
 export default new Router({
-  // 需要nginx支持，如果不需要暴露URL的，例如大屏，可以改为hash
-  mode: process.env.NODE_ENV === 'testing' ? 'hash' : 'history',
+  // history需要nginx支持
+  mode: 'hash',
   scrollBehavior: () => ({ y: 0 }),
   routes: constMap
 })
