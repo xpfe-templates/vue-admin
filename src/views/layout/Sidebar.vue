@@ -1,5 +1,6 @@
 <template>
-<el-menu class="sidebar" mode="vertical" :default-active="$route.path" background-color="#052326" text-color="#fff" active-text-color="#fff">
+<el-menu class="sidebar" mode="vertical" :default-active="calcActive($route)" background-color="#052326" 
+  text-color="#fff" active-text-color="#fff">
   <sidebar-item :routes="permissionRouters"></sidebar-item>
 </el-menu>
 </template>
@@ -13,6 +14,13 @@ export default {
   components: { SidebarItem },
   computed: {
     ...mapGetters(['permissionRouters']),
+  },
+
+  methods: {
+    calcActive (route) {
+      if (route.meta && route.meta.parent) return route.meta.parent
+      return route.path
+    },
   },
 }
 </script>

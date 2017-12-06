@@ -18,11 +18,14 @@ Vue.use(Router)
 
 /**
  * icon: iconfont的名字
- * isSlash: 是否是首页"/"
+ * isSlash: 是否是首页"/"，只有首页有这个参数
  * hidden: 如果为`hidden: true`不在sidebar出现
  * redirect: 如果`redirect: noredirect`不会redirect
  * noDropdown: 如果`noDropdown: true`子路由不会在sidebar出现
- * meta: { role: ['admin'] }权限相关
+ * meta: {
+ *   role: ['admin'], 权限相关
+ *   parent: '/xxx', 子路由也会高亮父路由菜单，原则上需要`noDropdown: true`
+ * }
 */
 
 // 全局需要的layout页面
