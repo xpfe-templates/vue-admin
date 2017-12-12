@@ -8,12 +8,9 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-let env = 'development'
-if (process.env.NODE_ENV !== 'development') {
-  env = 'production'
-}
-const _import = require('./_import_' + env)
 
+// 按需加载
+const _import = file => () => import('@/views/' + file + '.vue').then(m => m.default)
 Vue.use(Router)
 
 /**
@@ -39,7 +36,7 @@ export const constMap = [
     component: Layout,
     redirect: '/dashboard',
     // hidden: true,
-    icon: 'home',
+    icon: 'widgets',
     isSlash: true, // 只在这里使用
     noDropdown: true,
     children: [
@@ -51,11 +48,11 @@ export const constMap = [
     component: Layout,
     redirect: '/test/index',
     name: '测试路由',
-    icon: 'phone_iphone',
+    icon: 'dns',
     children: [
-      { path: 'index', component: _import('test/index'), name: '路由一', icon: 'phone' },
-      { path: 'sub1', component: _import('test/sub1'), name: '路由二', icon: 'phone_forwarded' },
-      { path: 'sub2', component: _import('test/sub2'), name: '路由三', icon: 'phone_in_talk' },
+      { path: 'index', component: _import('test/index'), name: '路由一', icon: 'tag' },
+      { path: 'sub1', component: _import('test/sub1'), name: '路由二', icon: 'tag' },
+      { path: 'sub2', component: _import('test/sub2'), name: '路由三', icon: 'tag' },
     ]
   },
 ]

@@ -1,0 +1,22 @@
+.clearfix {
+  &:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+    font-size: 0;
+    height: 0;
+  }
+}
+
+.textEllipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textBreak {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}

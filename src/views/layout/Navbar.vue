@@ -9,7 +9,7 @@
   <el-dropdown class="navbar-user" trigger="click">
     <div class="navbar-user__wrap">
       <span>{{userInfo.email}}</span>
-      <i class="iconfont">arrow_drop_down</i>
+      <i class="iconfont"></i>
     </div>
     <el-dropdown-menu class="navbar-user__dropdown" slot="dropdown">
       <el-dropdown-item><span @click="onLogout" style="display:block;">退出登录</span></el-dropdown-item>
@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .navbar {
   position: fixed;
   z-index: 1002;

@@ -1,8 +1,7 @@
-@import './mixin.scss';
-@import './reset.scss';
-@import './font.scss'; // 自定义font
-@import './element-ui.scss';
-@import '../fonts/material-icons.css'; // iconfont直接使用download的，减小更新成本
+@import './mixin.less';
+@import './reset.less';
+@import './element-ui.less'; // element-ui样式重写
+@import '../fonts/iconfont.css'; // iconfont直接使用download的，减小更新成本
 
 html, #app {
   height: 100%;
@@ -21,11 +20,11 @@ body {
 
 // 常用mixin注入，使用u-xxx表示
 .u-clearfix {
-  @include clearfix;
+  .clearfix();
 }
 .u-ellipsis {
-  @include textEllipsis;
+  .textEllipsis();
 }
 .u-break {
-  @include textBreak;
+  .textBreak();
 }

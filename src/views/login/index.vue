@@ -53,8 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "src/assets/css/mixin.scss";
+<style lang="less" scoped>
 .login {
   position: relative;
   height: 100%;

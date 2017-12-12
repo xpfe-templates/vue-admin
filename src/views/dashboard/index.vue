@@ -1,6 +1,6 @@
 <template>
 <div class="dashboard">
-  <div class="dashboard-main" style="min-height: 800px;" ></div>
+  <div class="dashboard-main" style="min-height: 800px;"></div>
 </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .dashboard {
   &-main {
     padding: 40px 20px;
