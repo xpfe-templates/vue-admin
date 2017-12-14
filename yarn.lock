@@ -5890,6 +5890,10 @@ xml-char-classes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
 
+xp-dom@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/xp-dom/-/xp-dom-1.0.2.tgz#8ac3084e24196134c54a6ebd8a97ebb337d2112d"
+
 xp-storage@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/xp-storage/-/xp-storage-1.0.4.tgz#d70a8ec63694f84cd61596113395b97bfb8e1162"
