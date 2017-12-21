@@ -7,8 +7,8 @@
 */
 
 import Vue from 'vue'
-import { on } from 'xp-dom'
 import errLog from '@/store/errLog'
+// import { on } from 'xp-dom'
 
 // Vue错误日志
 if (process.env.NODE_ENV === 'production') {
@@ -22,16 +22,16 @@ if (process.env.NODE_ENV === 'production') {
   }
 }
 
-// Script error
-on(window, 'error', (msg, url, line, col, error) => {
-  console.log('错误信息:', msg)
-  console.log('出错文件:', url)
-  console.log('出错行号:', line)
-  console.log('出错列号:', col)
-  console.log('错误详情:', error)
-})
+// // Script error
+// on(window, 'error', (msg, url, line, col, error) => {
+//   console.log('错误信息:', msg)
+//   console.log('出错文件:', url)
+//   console.log('出错行号:', line)
+//   console.log('出错列号:', col)
+//   console.log('错误详情:', error)
+// })
 
-// Promise reject
-on(window, 'unhandledrejection', (e) => {
-  console.log('Promise not catch:', e.reason)
-})
+// // Promise reject
+// on(window, 'unhandledrejection', (e) => {
+//   console.log('Promise not catch:', e.reason)
+// })
