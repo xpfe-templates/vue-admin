@@ -1,3 +1,8 @@
+/**
+ * Box（盒模型）
+ */
+
+ /* 清浮动 */
 .clearfix {
   &:after {
     content: ' ';
@@ -9,14 +14,220 @@
   }
 }
 
-.textEllipsis {
+/* 阴影 */
+.boxShadow (@h: 0px, @v: 1px, @blur: 5px, @spread: 0px, @color: rgba(0,0,0,0.2)) {
+  box-shadow: @h @v @blur @color;
+}
+
+/**
+ * Text（文本）
+ */
+
+/* 单行省略 */
+.ellipsis {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.textBreak {
-  word-wrap: break-word;
-  white-space: pre-wrap;
+/* 多行省略 */
+.multiEllipsis(@lines) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @lines;
+  -webkit-box-orient: vertical;
+}
+
+/**
+ * Func（功能函数）
+ */
+
+/* 三角形 */
+.triangle (@w: 20px, @h: 20px, @color: #eee, @dir: top) {
+  @halfw: @w / 2;
+  @halfh: @h / 2;
+  @color-style: @h solid @color;
+  @transparent-style: @h solid transparent;
+  @half-color-style: @halfh solid @color;
+  @half-transparent-style: @halfw solid transparent;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  & when (@dir = top) {
+    border-bottom: @color-style;
+    border-right: @half-transparent-style;
+    border-left: @half-transparent-style;
+  }
+  & when (@dir = right) {
+    border-left: @color-style;
+    border-top: @half-transparent-style;
+    border-bottom: @half-transparent-style;
+  }
+  & when (@dir = bottom) {
+    border-top: @color-style;
+    border-right: @half-transparent-style;
+    border-left: @half-transparent-style;
+  }
+  & when (@dir = left) {
+    border-right: @color-style;
+    border-top: @half-transparent-style;
+    border-bottom: @half-transparent-style;
+  }
+  & when (@dir = topright) {
+    border-top: @half-color-style;
+    border-right: @half-color-style;
+    border-bottom: @half-transparent-style;
+    border-left: @half-transparent-style;
+  }
+  & when (@dir = bottomright) {
+    border-top: @half-transparent-style;
+    border-right: @half-color-style;
+    border-bottom: @half-color-style;
+    border-left: @half-transparent-style;
+  }
+  & when (@dir = bottomleft) {
+    border-top: @half-transparent-style;
+    border-right: @half-transparent-style;
+    border-bottom: @half-color-style;
+    border-left: @half-color-style;
+  }
+  & when (@dir = topleft) {
+    border-top: @half-color-style;
+    border-right: @half-transparent-style;
+    border-bottom: @half-transparent-style;
+    border-left: @half-color-style;
+  }
+}
+
+/* 平行四边形 */
+.paralle (@w: 200px, @h: 100px, @deg: -20deg) {
+  display: inline-block;
+  width: @w;
+  height: @h;
+  transform: skew(@deg);
+  & > div {
+    transform: skew(-@deg);
+  }
+}
+
+/* 钻石 */
+.diamond (@size: 100px) {
+  @textSize: @size / 1.414; // gen2/2
+  @marSize: @size * 0.414 / 2; // (1-gen2)/2
+  display: inline-block;
+  position: relative;
+  width: @size;
+  height: @size;
+  transform: translate(@marSize, @marSize) rotate(-45deg);
+  & > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @textSize;
+    height: @textSize;
+    line-height: @textSize;
+    text-align: center;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+/* 爱心 */
+.heart (@size: 100px, @color: #eee) {
+  @rotateSize: @size * 0.8;
+  @radiusSize: @size * 0.5;
+  display: inline-block;
+  position: relative;
+  width: @size;
+  height: @size;
+  &:before, &:after {
+    content: ' ';
+    position: absolute;
+    top: @size * 0.1;
+    left: @size * 0.5;
+    width: @radiusSize;
+    height: @rotateSize;
+    background: @color;
+    border-radius: @radiusSize @radiusSize 0 0;
+    transform-origin: 0 100%;
+    transform: rotate(-45deg);
+  }
+  &:after {
+    left: 0;
+    transform-origin :100% 100%;
+    transform: rotate(45deg);
+  }
+}
+
+/* 加号/减号 */
+.plus (@size: 20px, @thick: 5px, @color: #eee) {
+  @mar: (@size - @thick) / 2;
+  display: inline-block;
+  position: relative;
+  width: @size;
+  height: @size;
+  &:before, &:after {
+    content: ' ';
+    position: absolute;
+    top: @mar;
+    left: 0;
+    width: @size;
+    height: @thick;
+    background: @color;
+  }
+  &:after {
+    top: 0;
+    left: @mar;
+    width: @thick;
+    height: @size;
+  }
+}
+.minus (@size: 20px, @thick: 5px, @color: #eee) {
+  @mar: (@size - @thick) / 2;
+  display: inline-block;
+  position: relative;
+  width: @size;
+  height: @size;
+  &:before {
+    content: ' ';
+    position: absolute;
+    top: @mar;
+    left: 0;
+    width: @size;
+    height: @thick;
+    background: @color;
+  }
+}
+
+/* 搜索框 */
+.search (@size: 20px, @thick: 2px, @color: #eee) {
+  @radiusSize: @size * 0.7;
+  @barSize: @size * 0.2 * 1.414;
+  @mar: @size * 0.1;
+  display: inline-block;
+  position: relative;
+  width: @size;
+  height: @size;
+  &:before {
+    content: ' ';
+    position: absolute;
+    top: @mar;
+    left: @mar;
+    width: @radiusSize;
+    height: @radiusSize;
+    border: @thick solid @color;
+    border-radius: 50%;
+  }
+  &:after {
+    content: ' ';
+    position: absolute;
+    right: @mar;
+    bottom: @mar;
+    width: @thick;
+    height: @barSize;
+    background: @color;
+    transform-origin: 0% 100%;
+    transform: rotate(-45deg);
+  }
 }

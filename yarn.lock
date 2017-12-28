@@ -5894,6 +5894,10 @@ xp-dom@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/xp-dom/-/xp-dom-1.0.2.tgz#8ac3084e24196134c54a6ebd8a97ebb337d2112d"
 
+xp-reset.css@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/xp-reset.css/-/xp-reset.css-1.0.1.tgz#c42cc46f361fc78138f02efdf18486f6447e0e3b"
+
 xp-storage@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/xp-storage/-/xp-storage-1.0.4.tgz#d70a8ec63694f84cd61596113395b97bfb8e1162"

@@ -1,12 +1,7 @@
-@import './mixin.less';
-@import './reset.less';
-@import './element-ui.less'; // element-ui样式重写
-@import '../fonts/iconfont.css'; // iconfont直接使用download的，减小更新成本
-
+// document级别预设置
 html, #app {
   height: 100%;
 }
-
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -18,13 +13,24 @@ body {
   overflow-y: hidden;
 }
 
-// 常用mixin注入，使用u-xxx表示
+// 抽离的样式
+@import './mixin.less'; // less mixin
+@import './element-ui.less'; // element-ui样式重写
+@import '../fonts/iconfont.css'; // iconfont直接使用download的，减小更新成本
+
+// 常用mixin预设样式，一般用u-xxx
 .u-clearfix {
   .clearfix();
 }
 .u-ellipsis {
-  .textEllipsis();
+  .ellipsis();
 }
-.u-break {
-  .textBreak();
+.u-ellipsis-2 {
+  .multiEllipsis(2);
+}
+.u-ellipsis-3 {
+  .multiEllipsis(3);
+}
+u-boxshadow {
+  .boxShadow();
 }

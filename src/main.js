@@ -10,8 +10,9 @@ import Vue from 'vue'
 import App from './App'
 import router from '@/router'
 import store from '@/store'
-import 'normalize.css/normalize.css' // normalize.css 样式格式化
-import '@/assets/css/index.less' // 全局样式文件
+import 'normalize.css/normalize.css' // normalize.css
+import 'xp-reset.css' // reset.css
+import '@/assets/css/index.less' // less 全局预设样式
 import * as filters from '@/utils/filters'
 import '@/components' // 引入全局组件
 import '@/errLog' // 错误日志
