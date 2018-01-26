@@ -5890,21 +5890,21 @@ xml-char-classes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
 
-xp-dom@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/xp-dom/-/xp-dom-1.0.2.tgz#8ac3084e24196134c54a6ebd8a97ebb337d2112d"
+xp-dom@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/xp-dom/-/xp-dom-1.0.6.tgz#fdf030174cccbc97eae4ec1f787587110d434608"
 
 xp-reset.css@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/xp-reset.css/-/xp-reset.css-1.0.1.tgz#c42cc46f361fc78138f02efdf18486f6447e0e3b"
 
-xp-storage@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/xp-storage/-/xp-storage-1.0.4.tgz#d70a8ec63694f84cd61596113395b97bfb8e1162"
+xp-storage@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/xp-storage/-/xp-storage-1.0.6.tgz#ace629f3b0ae58dda2c1214a8b168dae18d591bb"
 
-xp-utils@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/xp-utils/-/xp-utils-1.1.2.tgz#cfd86e35d0d04bb07ce64308add569ea09052e90"
+xp-utils@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.npmjs.org/xp-utils/-/xp-utils-1.1.7.tgz#3f1e79fc0f62b218c8242413ec739f4d884f84cd"
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"

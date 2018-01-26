@@ -7,6 +7,8 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+
+const path = require('path')
 const appConfig = require('../src/appConfig')
 const appName = require('../package.json').name
 
@@ -51,7 +53,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       title: appConfig.htmlTitle,
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      favicon: path.resolve(__dirname, '../favicon.ico'),
     }),
   ]
 })

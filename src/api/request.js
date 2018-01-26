@@ -53,7 +53,7 @@ service.interceptors.response.use(
     // 兼容auth老系统代码
     if (res.code !== undefined) { // 这是auth系统的老代码
       res = {
-        success: res.code === 0,
+        success: res.code === 200,
         codeNum: res.code,
         codeDesc: res.errorMsg,
         value: res.data,

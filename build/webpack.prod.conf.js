@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
 const appConfig = require('../src/appConfig')
 
 const env = process.env.NODE_ENV === 'testing'
@@ -76,6 +77,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         : config.build.index,
       template: 'index.html',
       inject: true,
+      favicon: path.resolve(__dirname, '../favicon.ico'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
