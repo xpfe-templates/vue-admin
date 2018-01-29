@@ -83,7 +83,7 @@ service.interceptors.response.use(
       return Promise.resolve(res)
     }
     // 没有权限
-    if (res.codeNum === appConfig.authErrorCode) {
+    if (appConfig.authCodes.includes(res.codeNum)) {
       router.push({ path: '/login' })
     }
     return Promise.reject(res)
