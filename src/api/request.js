@@ -18,17 +18,20 @@ const service = axios.create({
   withCredentials: true, // 需要登录权限的要带cookie
 })
 const CancelToken = axios.CancelToken
-const source = CancelToken.source()
+let cancel
 
 // request拦截器
 service.interceptors.request.use(
   config => {
     // 是否在ajaxing中的判断，同请求只允许存在一个
     if (config.oneAjax) {
-      config.cancelToken = source.token
+      // 每次需要重新生成，防止首次请求被cancel
+      config.cancelToken = new CancelToken((c) => {
+        cancel = c
+      })
       if (!window.oneAjax) window.oneAjax = {}
       if (window.oneAjax[config.url]) { // 已经有一个再执行，下一个直接cancel
-        source.cancel()
+        cancel()
       }
       window.oneAjax[config.url] = true
     }
@@ -59,7 +62,7 @@ service.interceptors.response.use(
       res = {
         success: res.code === 200,
         codeNum: res.code,
-        codeDesc: res.msg || res.errorMsg,
+        codeDesc: res.errorMsg,
         value: res.data,
       }
     } else {
