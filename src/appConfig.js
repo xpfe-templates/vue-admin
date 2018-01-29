@@ -21,10 +21,14 @@ let authUrl = 'http://116.62.148.115:8082' // auth接口
 // api相关
 let baseUrl = 'http://apitest.example.com' // api接口
 
+// 前期mock，联调时候注释
+baseUrl = 'https://www.easy-mock.com/mock/5a0bf56bdbfe9e4cbd641706/unmanned'
+authUrl = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
+
 if (env === 'production') { // 生产环境
   htmlTitle = 'Vue Admin'
+  authUrl = 'https://auth.startdtapi.com'
   baseUrl = 'http://api.example.com'
-  authUrl = 'http://auth.example.com'
 } else if (env === 'testing') { // 测试环境
   htmlTitle = 'Vue Admin - test'
   authUrl = 'http://116.62.148.115:8082'
@@ -34,9 +38,9 @@ if (env === 'production') { // 生产环境
 module.exports = {
   gitDir,
   htmlTitle,
+  baseUrl,
   clientId,
   redirectUri,
   authCodes,
   authUrl,
-  baseUrl,
 }

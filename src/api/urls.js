@@ -6,9 +6,12 @@
  * @desc [url列表]
 */
 
+import appConfig from '@/appConfig'
+
 export default {
-  // 登录
-  login: '/login',
+  // auth-账号中心
+  login: appConfig.authUrl + '/login',
+  // 登录登出
   loginback: '/back',
   logout: '/logout',
   getUserInfo: '/auth/personInfo',

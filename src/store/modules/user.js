@@ -2,16 +2,17 @@
  * @author xiaoping
  * @email edwardhjp@gmail.com
  * @create date 2017-08-03 07:05:04
- * @modify date 2017-10-23 03:40:08
- * @desc [用户store，主要放置用户相关]
+ * @modify date 2018-01-29 10:24:27
+ * @desc [用户store]
 */
 
 import md5 from 'js-md5'
+import storage from 'xp-storage'
+import { deepClone } from 'xp-utils'
+
 import api from '@/api/urls'
 import request from '@/api/request'
 import appConfig from '@/appConfig'
-import { deepClone } from 'xp-utils'
-import storage from 'xp-storage'
 
 const user = {
   state: {
@@ -38,7 +39,6 @@ const user = {
       data.redirectUri = appConfig.redirectUri
 
       return request({
-        baseURL: appConfig.authUrl,
         url: api.login,
         data,
       })
