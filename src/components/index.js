@@ -10,9 +10,10 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.use(ElementUI)
+import pagination from '@/components/Pagination'
 
-const components = []
+Vue.use(ElementUI)
+const components = [pagination]
 components.forEach((component) => {
   Vue.component(component.name, component)
 })

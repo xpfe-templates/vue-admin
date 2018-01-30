@@ -62,7 +62,7 @@ service.interceptors.response.use(
       res = {
         success: res.code === 200,
         codeNum: res.code,
-        codeDesc: res.errorMsg,
+        codeDesc: res.msg || res.errorMsg,
         value: res.data,
       }
     } else {
