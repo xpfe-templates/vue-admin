@@ -46,41 +46,16 @@ export default {
   margin-top: 10px;
   text-align: right;
 }
-.el-pager li {
-  padding: 0 4px;
-  background: #fff;
-  vertical-align: top;
-  display: inline-block;
-  font-size: 13px;
-  min-width: 36px;
-  height: 28px;
-  line-height: 28px;
-  cursor: pointer;
-  box-sizing: border-box;
-  text-align: center;
-  margin: 0;
-}
-.el-pager li:hover {
-  color: #1CCADA;
-}
-.el-pager li.active {
-  color: #1CCADA;
-}
-.el-pagination {
-  padding: 12px 0;
-  text-align: right;
-}
 .el-pagination__btn {
   margin-left: 12px;
-  background-color: #1CCADA;
-  color: #fff;
-}
-.el-pagination__btn:hover {
-  background: #1FE1F2 !important;
+  background: #1CCADA !important;
+  border-color: #1CCADA !important;
   color: #fff !important;
 }
-.el-pagination.is-active, .el-pagination:active {
-  color: #19B1BF;
+.el-pagination__btn:hover {
+  background: #49d5e1 !important;
+  border-color: #49d5e1 !important;
+  color: #fff !important;
 }
 .el-pagination__editor {
   border: 1px solid #d1dbe5;

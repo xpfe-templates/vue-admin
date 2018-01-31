@@ -1,6 +1,5 @@
 <template>
-<el-menu class="sidebar" mode="vertical" :default-active="calcActive($route)" background-color="#052326" 
-  text-color="#fff" active-text-color="#fff">
+<el-menu class="sidebar" mode="vertical" :default-active="calcActive($route)">
   <sidebar-item :routes="permissionRouters"></sidebar-item>
 </el-menu>
 </template>
@@ -25,7 +24,39 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+.el-menu {
+  background: #052326;
+  &-item {
+    color: #fff;
+    &:hover {
+      color: #fff;
+      background: #1CCADA;
+    }
+    i {
+      color: #fff;
+    }
+    &.is-active {
+      color: #fff;
+      background: #1CCADA;
+    }
+  }
+  &--horizontal {
+    border-bottom: none;
+  }
+}
+.el-submenu {
+  &__title {
+    color: #fff;
+    &:hover {
+      color: #fff;
+      background: #1CCADA;
+    }
+    i {
+      color: #fff;
+    }
+  }
+}
 .sidebar {
   position: fixed;
   z-index: 1001;

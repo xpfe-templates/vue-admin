@@ -21,7 +21,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.0",
     "xp-dom": "^1.0.6",
-    "xp-reset.css": "^1.0.1",
+    "xp-reset.css": "^1.0.3",
     "xp-storage": "^1.0.6",
     "xp-utils": "^1.1.7"
   },
