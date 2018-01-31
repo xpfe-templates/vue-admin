@@ -68,4 +68,7 @@ export default {
   box-sizing: border-box;
   transition: border .3s;
 }
+.el-pagination__editor:focus {
+  border-color: #1CCADA;
+}
 </style>
