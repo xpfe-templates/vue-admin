@@ -8,7 +8,7 @@
 
 import axios from 'axios'
 
-import router from '@/router'
+// import router from '@/router'
 import appConfig from '@/appConfig'
 
 // 创建axios实例
@@ -87,7 +87,8 @@ service.interceptors.response.use(
     }
     // 没有权限
     if (appConfig.authCodes.includes(res.codeNum)) {
-      router.push({ path: '/login' })
+      // router.push({ path: '/login' }) // 跳转登录
+      location.href = appConfig.redirectUri // 跳转控制台登录
     }
     return Promise.reject(res)
   },

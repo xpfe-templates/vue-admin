@@ -14,7 +14,7 @@ let htmlTitle = 'Vue Admin - dev'
 
 // auth相关
 const clientId = '' // 应用名称
-const redirectUri = '' // auth登录跳转链接
+const redirectUri = `http://console.startdt.net/?redirectUri=${encodeURIComponent(location.href)}#/login` // auth登录跳转链接
 const authCodes = [2003] // 没有权限的错误码
 let authUrl = 'http://116.62.148.115:8082' // auth接口
 
