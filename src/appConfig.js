@@ -10,37 +10,37 @@ const env = process.env.NODE_ENV
 
 // 用户自动部署目录，必须和git目录或者jenkins的创建目录一致，影响路由
 const gitDir = 'vue-admin'
-let htmlTitle = 'Vue Admin - dev'
+const htmlTitle = 'Vue Admin'
 
 // auth相关
-const clientId = '' // 应用名称
-const redirectUri = `http://console.startdt.net/?redirectUri=${encodeURIComponent(location.href)}#/login` // auth登录跳转链接
-const authCodes = [2003] // 没有权限的错误码
+let accountUrl = 'http://fetest.startdt.net/aishop-account' // 账号中心前端跳转地址
 let authUrl = 'http://116.62.148.115:8082' // auth接口
+const authCodes = [2003] // 没有权限的错误码
+const clientId = '' // TODO 应用名称
+let redirectUrl = '' // 账号中心api接口地址
 
 // api相关
 let baseUrl = 'http://apitest.example.com' // api接口
 
-// 前期mock，联调时候注释
-baseUrl = 'https://www.easy-mock.com/mock/5a0bf56bdbfe9e4cbd641706/unmanned'
-authUrl = 'https://www.easy-mock.com/mock/59f02babb120c445fab92be2/account'
-
 if (env === 'production') { // 生产环境
-  htmlTitle = 'Vue Admin'
+  accountUrl = ''
   authUrl = 'https://auth.startdtapi.com'
+  redirectUrl = 'http://login.example.com/loginRedirect'
   baseUrl = 'http://api.example.com'
 } else if (env === 'testing') { // 测试环境
-  htmlTitle = 'Vue Admin - test'
+  accountUrl = 'http://fetest.startdt.net/aishop-account'
   authUrl = 'http://116.62.148.115:8082'
+  redirectUrl = 'http://testlogin.example.com/loginRedirect'
   baseUrl = 'http://apitest.example.com'
 }
 
 module.exports = {
   gitDir,
   htmlTitle,
-  baseUrl,
-  clientId,
-  redirectUri,
-  authCodes,
+  accountUrl,
   authUrl,
+  authCodes,
+  clientId,
+  redirectUrl,
+  baseUrl,
 }

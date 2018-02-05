@@ -87,8 +87,15 @@ service.interceptors.response.use(
     }
     // 没有权限
     if (appConfig.authCodes.includes(res.codeNum)) {
-      // router.push({ path: '/login' }) // 跳转登录
-      location.href = appConfig.redirectUri // 跳转控制台登录
+      // 跳转登录
+      // router.push({ path: '/login' })
+      // 跳转账户中心登录
+      let tempUrl = location.href
+      if (tempUrl.charAt(tempUrl.length - 1) === '/') {
+        tempUrl = tempUrl.substr(0, tempUrl.length - 1)
+      }
+      let encodeUrl = encodeURIComponent(tempUrl)
+      location.href = `${appConfig.accountUrl}?clientId=${appConfig.clientId}&redirectUrl=${appConfig.redirectUrl}&redirectUri=${encodeUrl}/#/login`
     }
     return Promise.reject(res)
   },
