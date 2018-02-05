@@ -23,7 +23,7 @@
     "xp-dom": "^1.0.6",
     "xp-reset.css": "^1.0.3",
     "xp-storage": "^1.0.6",
-    "xp-utils": "^1.1.7"
+    "xp-utils": "^1.1.8"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

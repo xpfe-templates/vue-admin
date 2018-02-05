@@ -5902,9 +5902,9 @@ xp-storage@^1.0.6:
   version "1.0.6"
   resolved "https://registry.npmjs.org/xp-storage/-/xp-storage-1.0.6.tgz#ace629f3b0ae58dda2c1214a8b168dae18d591bb"
 
-xp-utils@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.npmjs.org/xp-utils/-/xp-utils-1.1.7.tgz#3f1e79fc0f62b218c8242413ec739f4d884f84cd"
+xp-utils@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/xp-utils/-/xp-utils-1.1.8.tgz#5f28e32bbef42480e63ded60247f98d53650be19"
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"
