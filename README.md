@@ -1,5 +1,5 @@
-# vue-admin
-An admin project based on vue.js and element-ui
+# {{projectName}}
+An vue-admin project named {{projectName}}
 
 ## Installation
 

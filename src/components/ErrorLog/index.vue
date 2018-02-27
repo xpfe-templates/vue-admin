@@ -9,7 +9,7 @@
     <el-table :data="log">
       <el-table-column label="message">
         <template slot-scope="scope">
-          <div>msg: {{ scope.row.err.message }}</div>
+          <div>msg: {{scope.row.err.message}}</div>
           <br/>
           <div>url: {{scope.row.url}}</div>
         </template>
