@@ -3,7 +3,7 @@ An vue-admin project named {{projectName}}
 
 ## Installation
 
-> npm i -g xpfe-cli && xpfe init <app-name>
+> npm i -g xpfe-cli && xpfe init \<app-name\>
 
 ## Usage
 
